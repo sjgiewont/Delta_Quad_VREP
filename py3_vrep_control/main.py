@@ -11,26 +11,39 @@
 import sys
 import socket
 from threading import Thread
+import numpy as np
+import pickle
 
-MAX_LENGTH = 4096
+MAX_LENGTH = 95
 
 def recieve_socket_commands(clientsocket, clientID):
+  angle = 4.5
   while 1:
     # receive the commands here
     buf = clientsocket.recv(MAX_LENGTH)
+    buf_string = buf.decode()
+    print(buf_string)
+    buf_array = buf_string.split(",", 11)
+    print(buf_array)
+    # print(int(buf_array[1]) + int(buf_array[0]))
     if buf == '':
         return #client terminated connection
-    if buf == b'1':
+    if buf:
         print('Moving')
-        errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 1, vrep.simx_opmode_oneshot_wait)
-        errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.5, vrep.simx_opmode_oneshot_wait)
-        time.sleep(.1)
-        errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
-        errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
-        print('Not Moving')
-    print(buf)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_oneshot_wait)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_oneshot_wait)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_oneshot_wait)
 
-# setup a socket that will recieve commadns from Python2 code
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, 0.5*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
+        # angle = angle + 0.1
+        # print(angle)
+        # print(0.5*numpy.sin(angle))
+        print('Not Moving')
+    # print(buf)
+
+# setup a socket that will recieve commands from Python2 code
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # define port and host address
@@ -71,28 +84,37 @@ if clientID!=-1:
 
     time.sleep(1)
 
-    errorCode, left_motor_handle = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx_leftMotor', vrep.simx_opmode_oneshot_wait)
-    errorCode, right_motor_handle = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx_rightMotor', vrep.simx_opmode_oneshot_wait)
-    errorCode, pioneer_pos = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx', vrep.simx_opmode_oneshot_wait)
+    # errorCode, left_motor_handle = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx_leftMotor', vrep.simx_opmode_oneshot_wait)
+    # errorCode, right_motor_handle = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx_rightMotor', vrep.simx_opmode_oneshot_wait)
+    # errorCode, pioneer_pos = vrep.simxGetObjectHandle(clientID, 'Pioneer_p3dx', vrep.simx_opmode_oneshot_wait)
 
+    errorCode, delta_arm_joint_1 = vrep.simxGetObjectHandle(clientID, 'hip_1_joint', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_arm_joint_2 = vrep.simxGetObjectHandle(clientID, 'hip_2_joint', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_arm_joint_3 = vrep.simxGetObjectHandle(clientID, 'hip_3_joint', vrep.simx_opmode_oneshot_wait)
+    print(errorCode)
 
     if errorCode == -1:
         print('Can not find left or right motor')
         sys.exit()
 
-    errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 1, vrep.simx_opmode_oneshot_wait)
-    errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.5, vrep.simx_opmode_oneshot_wait)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, 0, vrep.simx_opmode_oneshot_wait)
+
+    # errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 1, vrep.simx_opmode_oneshot_wait)
+    # errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0.5, vrep.simx_opmode_oneshot_wait)
 
     time.sleep(0.1)
 
     startTime = time.time()
-    while time.time() - startTime < 1:
-        returnCode, data = vrep.simxGetObjectPosition (clientID, pioneer_pos, -1, vrep.simx_opmode_streaming)  # Try to retrieve the streamed data
-        if returnCode==vrep.simx_return_ok: # After initialization of streaming, it will take a few ms before the first value arrives, so check the return code
-            print ('Pioneer Position is on: ',data)
+    # while time.time() - startTime < 1:
+    #     # returnCode, data = vrep.simxGetObjectPosition (clientID, pioneer_pos, -1, vrep.simx_opmode_streaming)  # Try to retrieve the streamed data
+    #
+    #     if returnCode==vrep.simx_return_ok: # After initialization of streaming, it will take a few ms before the first value arrives, so check the return code
+    #         print ('Pioneer Position is on: ',data)
 
-    errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
-    errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
+    # errorCode = vrep.simxSetJointTargetVelocity(clientID, left_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
+    # errorCode = vrep.simxSetJointTargetVelocity(clientID, right_motor_handle, 0, vrep.simx_opmode_oneshot_wait)
+    # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, 45, vrep.simx_opmode_oneshot_wait)
+
 
     # start a thread to listen to incomming socket commands from Python2 code
     while 1:

@@ -9,6 +9,7 @@ import time
 from subprocess import call
 import socket
 from threading import Thread
+import pickle
 
 
 def callPython3VREPControl():
@@ -32,11 +33,36 @@ def main():
     s = socket.socket()
     s.connect((HOST, PORT))
 
+    d = {
+        "leg": [
+            {"servo1": "1", "servo2": "2", "servo3": "3"}
+        ]
+    }
+
+    d = np.array([1,2,3])
+    data_string = pickle.dumps(d)
+
+    # servovalues = json.dumps(d)
+
     # sample loop to demsotrate constantly sending commands to VREP
     while 1:
-        msg = "1"
-        time.sleep(.2)
+        # leg1 = [0.5, 0.5, 0.5]
+        # leg2 = [0.5, 0.5, 0.5]
+        # leg3 = [0.5, 0.5, 0.5]
+        # leg4 = [0.5, 0.5, 0.5]
+        #
+        #
+        # msg = "%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f" % (leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+
+        leg1 = [180, 180, 180]
+        leg2 = [0.5, 0.5, 0.5]
+        leg3 = [0.5, 0.5, 0.5]
+        leg4 = [0.5, 0.5, 0.5]
+        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+
+        time.sleep(0.01)
         s.send(msg)
+        # s.send(msg)
 
     print "Start VREP Server"
     # client_id = startVREP()
