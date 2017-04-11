@@ -7,7 +7,7 @@
 # then start simulation, and run this program.
 
 
-
+import timeit
 import sys
 import socket
 from threading import Thread
@@ -22,17 +22,32 @@ def recieve_socket_commands(clientsocket, clientID):
     # receive the commands here
     buf = clientsocket.recv(MAX_LENGTH)
     buf_string = buf.decode()
-    print(buf_string)
+    # print(buf_string)
     buf_array = buf_string.split(",", 11)
     print(buf_array)
+
+    start = timeit.default_timer()
+
     # print(int(buf_array[1]) + int(buf_array[0]))
     if buf == '':
         return #client terminated connection
     if buf:
         print('Moving')
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_oneshot_wait)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_oneshot_wait)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_oneshot_wait)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_streaming)
+
+        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_1, np.radians(float(buf_array[3]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_2, np.radians(float(buf_array[4]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_3, np.radians(float(buf_array[5]) - 180), vrep.simx_opmode_streaming)
+
+        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_1, np.radians(float(buf_array[6]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_2, np.radians(float(buf_array[7]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_3, np.radians(float(buf_array[8]) - 180), vrep.simx_opmode_streaming)
+
+        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
 
         # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
         # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
@@ -41,6 +56,8 @@ def recieve_socket_commands(clientsocket, clientID):
         # print(angle)
         # print(0.5*numpy.sin(angle))
         print('Not Moving')
+        stop = timeit.default_timer()
+        print(stop - start)
     # print(buf)
 
 # setup a socket that will recieve commands from Python2 code
@@ -91,6 +108,18 @@ if clientID!=-1:
     errorCode, delta_arm_joint_1 = vrep.simxGetObjectHandle(clientID, 'hip_1_joint', vrep.simx_opmode_oneshot_wait)
     errorCode, delta_arm_joint_2 = vrep.simxGetObjectHandle(clientID, 'hip_2_joint', vrep.simx_opmode_oneshot_wait)
     errorCode, delta_arm_joint_3 = vrep.simxGetObjectHandle(clientID, 'hip_3_joint', vrep.simx_opmode_oneshot_wait)
+
+    errorCode, delta_0_arm_joint_1 = vrep.simxGetObjectHandle(clientID, 'hip_1_joint0', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_0_arm_joint_2 = vrep.simxGetObjectHandle(clientID, 'hip_2_joint0', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_0_arm_joint_3 = vrep.simxGetObjectHandle(clientID, 'hip_3_joint0', vrep.simx_opmode_oneshot_wait)
+
+    errorCode, delta_1_arm_joint_1 = vrep.simxGetObjectHandle(clientID, 'hip_1_joint1', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_1_arm_joint_2 = vrep.simxGetObjectHandle(clientID, 'hip_2_joint1', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_1_arm_joint_3 = vrep.simxGetObjectHandle(clientID, 'hip_3_joint1', vrep.simx_opmode_oneshot_wait)
+
+    errorCode, delta_2_arm_joint_1 = vrep.simxGetObjectHandle(clientID, 'hip_1_joint2', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_2_arm_joint_2 = vrep.simxGetObjectHandle(clientID, 'hip_2_joint2', vrep.simx_opmode_oneshot_wait)
+    errorCode, delta_2_arm_joint_3 = vrep.simxGetObjectHandle(clientID, 'hip_3_joint2', vrep.simx_opmode_oneshot_wait)
     print(errorCode)
 
     if errorCode == -1:
@@ -117,15 +146,18 @@ if clientID!=-1:
 
 
     # start a thread to listen to incomming socket commands from Python2 code
-    while 1:
-        print('Start Accept connections')
-        # accept connections from outside
-        (clientsocket, address) = serversocket.accept()
-        print('Accept connections')
+    # while 1:
+    print('Start Accept connections')
+    # accept connections from outside
+    (clientsocket, address) = serversocket.accept()
+    print('Accept connections')
 
-        # start a thread to continuously check the for commands sent by Python2 script
-        ct = Thread(target=recieve_socket_commands, args=(clientsocket,clientID))
-        ct.run()
+    # start a thread to continuously check the for commands sent by Python2 script
+    ct = Thread(target=recieve_socket_commands, args=(clientsocket,clientID))
+    ct.run()
+
+    # while 1:
+
 
     # Now send some data to V-REP in a non-blocking fashion:
     # vrep.simxAddStatusbarMessage(clientID,'Hello V-REP!',vrep.simx_opmode_oneshot)

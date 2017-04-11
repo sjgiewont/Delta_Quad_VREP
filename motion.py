@@ -10,10 +10,24 @@ from inverseKinematics import inverseKinematics
 
 def move_to_pos(position, leg):
      servos_angles = inverseKinematics(position)
-     print  servos_angles
+     print servos_angles
+     return
      # vrep_get_num_objects(clientID)
      # servo_values = angleToServoValue(servos_angles, leg)
      # serialSend_one(servo_values, leg)
+
+# def moveToPos(trajectory, index):
+#     leg1 = inverseKinematics(trajectory[index[0]])
+#     leg2 = inverseKinematics(trajectory[index[1]])
+#     leg3 = inverseKinematics(trajectory[index[2]])
+#     leg4 = inverseKinematics(trajectory[index[3]])
+#
+#     # leg1 = [180, 180, 180]
+#     # leg2 = [0.5, 0.5, 0.5]
+#     # leg3 = [0.5, 0.5, 0.5]
+#     # leg4 = [0.5, 0.5, 0.5]
+#     msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+#     vrep_socket.send(msg)
 
 def step(curr_pos, new_pos):
     #parabola function between 2 points

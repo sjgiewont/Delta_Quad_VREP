@@ -12,7 +12,7 @@ base_radius = 55
 
 def loadAnfisNetwork():
     global anf
-    with open('fuzzy_test_bell_140_220_two_20_epochs.pkl', 'rb') as f:
+    with open('fuzzy_log_test_table_100_260_10_epoch_10.pkl', 'rb') as f:
         anf = pickle.load(f)
     return anf
 
