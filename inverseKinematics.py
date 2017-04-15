@@ -129,13 +129,13 @@ def inverseKinematics(pos):
 
     if motor_angles[0] > 270:
         print "MOTOR 0 LIMIT EXCEEDED!"
-        motor_angles[0] = 260
+        motor_angles[0] = 270
     if motor_angles[1] > 270:
         print "MOTOR 1 LIMIT EXCEEDED!"
-        motor_angles[1] = 260
+        motor_angles[1] = 270
     if motor_angles[2] > 270:
         print "MOTOR 2 LIMIT EXCEEDED!"
-        motor_angles[2] = 260
+        motor_angles[2] = 270
     if motor_angles[0] < 90:
         print "MOTOR 0 LIMIT EXCEEDED!"
         motor_angles[0] = 90

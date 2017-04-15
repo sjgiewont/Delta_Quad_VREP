@@ -34,26 +34,6 @@ def main():
     vrep_socket = socket.socket()
     vrep_socket.connect((HOST, PORT))
 
-    # sample loop to demsotrate constantly sending commands to VREP
-    # while 1:
-        # leg1 = [0.5, 0.5, 0.5]
-        # leg2 = [0.5, 0.5, 0.5]
-        # leg3 = [0.5, 0.5, 0.5]
-        # leg4 = [0.5, 0.5, 0.5]
-        #
-        #
-        # msg = "%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f,%03.3f,%3.3f,%3.3f" % (leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-
-        # leg1 = [180, 180, 180]
-        # leg2 = [0.5, 0.5, 0.5]
-        # leg3 = [0.5, 0.5, 0.5]
-        # leg4 = [0.5, 0.5, 0.5]
-        # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        #
-        # time.sleep(0.01)
-        # vrep_socket.send(msg)
-        # s.send(msg)
-
     # print "Start VREP Server"
     # client_id = startVREP()
 
@@ -61,11 +41,14 @@ def main():
     anf = loadAnfisNetwork()
     print "ANFIS OPEN"
 
+    # jump(-150, -300, 2)
+
     step_angle = 90
-    while step_angle < 480:
+    while True:
         print step_angle
-        walk_dir(100, 50, step_angle, 1, 150)
-        # step_angle += 5
+        walk_dir(150, -20, step_angle, 1, 250)
+        # time.sleep(.25)
+        # step_angle -= 5
         print "Done Moving"
 
     # thread to continually check for user input
@@ -92,14 +75,19 @@ def main():
 def walk_dir(step_length, step_height, degrees, step_num, precision):
     #calculate the walking trajectory of one step
     # walking_trajectory = piecewiseMotion(step_length, step_height, degrees, precision)
-    walking_trajectory_R = piecewiseMotion_2(step_length, step_height, degrees, -220, precision)
-    walking_trajectory_L = piecewiseMotion_2(step_length, step_height, degrees - 180, -220, precision)
+    walking_trajectory_R = piecewiseMotion_3(step_length, step_height, degrees, -230, precision)
+    walking_trajectory_L = piecewiseMotion_3(step_length, step_height, degrees - 180, -230, precision)
 
     # initialize the index of each leg, offset all of them
     FL_leg_index = 0
     FR_leg_index = precision / 4
-    HL_leg_index = 2 * FR_leg_index
-    HR_leg_index = 3 * FR_leg_index
+    HL_leg_index = 2 * (precision / 4)
+    HR_leg_index = 3 * (precision / 4)
+
+    # FL_leg_index = 2 * (precision / 4)
+    # FR_leg_index = 3 * (precision / 4)
+    # HL_leg_index = 0
+    # HR_leg_index = (precision / 4)
 
     leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
 
@@ -139,8 +127,44 @@ def walk_dir(step_length, step_height, degrees, step_num, precision):
             leg_index[3] = 0
 
 
+def jump(high_pt, low_pt, precision):
+    z_trajectory = np.linspace(high_pt, low_pt, precision)
+    x_trajectory = np.zeros((precision, 1))
+    y_trajectory = np.zeros((precision, 1))
 
+    final_trajectory = []
 
+    # create matrix of all positions along trajectory
+    for i in range(precision):
+        final_trajectory.append([x_trajectory[i][0], y_trajectory[i][0], z_trajectory[i]])
+
+    FL_leg_index = 0
+    FR_leg_index = 0
+    HL_leg_index = 0
+    HR_leg_index = 0
+    leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
+
+    decrease_index = 0
+
+    while(True):
+        leg1 = inverseKinematics(final_trajectory[leg_index[1]])
+        leg2 = inverseKinematics(final_trajectory[leg_index[0]])
+        leg3 = inverseKinematics(final_trajectory[leg_index[2]])
+        leg4 = inverseKinematics(final_trajectory[leg_index[3]])
+        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        vrep_socket.send(msg)
+        time.sleep(.5)
+
+        if leg_index[0] == precision - 1:
+            decrease_index = 1
+
+        if leg_index[0] == 0:
+            decrease_index = 0
+
+        if decrease_index == 0:
+            leg_index = [x + 1 for x in leg_index]
+        elif decrease_index == 1:
+            leg_index = [x - 1 for x in leg_index]
 
 # parabola function between 2 points
 def step_to(leg, curr_pos, new_pos, step_height):

@@ -32,22 +32,37 @@ def recieve_socket_commands(clientsocket, clientID):
     if buf == '':
         return #client terminated connection
     if buf:
-        print('Moving')
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_streaming)
 
-        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_1, np.radians(float(buf_array[3]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_2, np.radians(float(buf_array[4]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_3, np.radians(float(buf_array[5]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_1, np.radians(float(buf_array[3]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_2, np.radians(float(buf_array[4]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_3, np.radians(float(buf_array[5]) - 180), vrep.simx_opmode_streaming)
 
-        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_1, np.radians(float(buf_array[6]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_2, np.radians(float(buf_array[7]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_3, np.radians(float(buf_array[8]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_1, np.radians(float(buf_array[6]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_2, np.radians(float(buf_array[7]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_3, np.radians(float(buf_array[8]) - 180), vrep.simx_opmode_streaming)
 
-        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
-        errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
+        errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
+
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_streaming)
+
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_1, np.radians(float(buf_array[3]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_2, np.radians(float(buf_array[4]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_0_arm_joint_3, np.radians(float(buf_array[5]) - 180), vrep.simx_opmode_streaming)
+        #
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_1, np.radians(float(buf_array[6]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_2, np.radians(float(buf_array[7]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_1_arm_joint_3, np.radians(float(buf_array[8]) - 180), vrep.simx_opmode_streaming)
+        #
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
+        # errorCode = vrep.simxSetJointPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
 
         # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_1, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
         # errorCode = vrep.simxSetJointPosition(clientID, delta_arm_joint_2, 0.2*numpy.sin(angle) + 0.6, vrep.simx_opmode_oneshot_wait)
@@ -55,9 +70,6 @@ def recieve_socket_commands(clientsocket, clientID):
         # angle = angle + 0.1
         # print(angle)
         # print(0.5*numpy.sin(angle))
-        print('Not Moving')
-        stop = timeit.default_timer()
-        print(stop - start)
     # print(buf)
 
 # setup a socket that will recieve commands from Python2 code
