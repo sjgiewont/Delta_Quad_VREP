@@ -47,15 +47,16 @@ def main():
     step_length = 100
     step_height = 0
     step_precision = 250
+    num_steps = 3
     # while True:
     #     print step_angle
         # balanceTest(-100, -260, 150)
 
-    curr_pos = walk_dir(step_length, step_height, step_angle, 1, step_precision)
-    print curr_pos
-    homePos(curr_pos)
-        # time.sleep(.25)
-        # step_angle -= 5
+    while True:
+        curr_pos = walk_dir(step_length, step_height, step_angle, num_steps, step_precision)
+        homePos(curr_pos)
+        time.sleep(2)
+        step_angle += 45
         # print "Done Moving"
 
     # thread to continually check for user input
@@ -75,14 +76,24 @@ def walk_dir(step_length, step_height, degrees, step_num, precision):
     HL_leg_index = 2 * (precision / 4)
     HR_leg_index = 3 * (precision / 4)
 
-    # FL_leg_index = 2 * (precision / 4)
-    # FR_leg_index = 3 * (precision / 4)
-    # HL_leg_index = 0
-    # HR_leg_index = (precision / 4)
-
     leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
 
     steps = 0
+    home_pos = [0, 0, -200]
+    start_step_precision = 150
+
+    parabola_motion_2 = parabolaStep(home_pos, walking_trajectory_L[FR_leg_index], 75, -200, start_step_precision)
+    parabola_motion_3 = parabolaStep(home_pos, walking_trajectory_R[HL_leg_index], 75, -200, start_step_precision)
+
+    for index in range(0,start_step_precision):
+        leg1 = inverseKinematics(home_pos)
+        leg2 = inverseKinematics(parabola_motion_2[index])
+        leg3 = inverseKinematics(parabola_motion_3[index])
+        leg4 = inverseKinematics(home_pos)
+        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        vrep_socket.send(msg)
+
+
 
     # step a certain amount of times
     while(steps < step_num):
@@ -283,19 +294,85 @@ def homePos(curr_pos):
     precision = 150
 
     leg_1_pos = curr_pos[0]
-    leg2 = curr_pos[1]
-    leg3 = curr_pos[2]
-    leg4 = curr_pos[3]
+    leg_2_pos = curr_pos[1]
+    leg_3_pos = curr_pos[2]
+    leg_4_pos = curr_pos[3]
 
-    parabola_motion = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+
+    if curr_pos[0][0] > 0:
+        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, 0, -200, precision)
+        for index in range(0, precision):
+            leg1 = inverseKinematics(parabola_motion_1[index])
+            leg2 = inverseKinematics(curr_pos[1])
+            leg3 = inverseKinematics(curr_pos[2])
+            leg4 = inverseKinematics(curr_pos[3])
+            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+            vrep_socket.send(msg)
+        curr_pos[0] = parabola_motion_1[index]
+
+    elif curr_pos[0][0] < 0:
+        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+
+    if curr_pos[1][0] > 0:
+        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, 0, -200, precision)
+        for index in range(0, precision):
+            leg1 = inverseKinematics(curr_pos[0])
+            leg2 = inverseKinematics(parabola_motion_2[index])
+            leg3 = inverseKinematics(curr_pos[2])
+            leg4 = inverseKinematics(curr_pos[3])
+            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+            vrep_socket.send(msg)
+        curr_pos[1] = parabola_motion_2[index]
+
+    elif curr_pos[1][0] < 0:
+        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, step_height, -200, precision)
+
+    if curr_pos[2][0] < 0:
+        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, 0, -200, precision)
+        for index in range(0, precision):
+            leg1 = inverseKinematics(curr_pos[0])
+            leg2 = inverseKinematics(curr_pos[1])
+            leg3 = inverseKinematics(parabola_motion_3[index])
+            leg4 = inverseKinematics(curr_pos[3])
+            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
+            vrep_socket.send(msg)
+        curr_pos[2] = parabola_motion_3[index]
+
+    elif curr_pos[2][0] > 0:
+        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, step_height, -200, precision)
+
+    if curr_pos[3][0] < 0:
+        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, 0, -200, precision)
+        for index in range(0, precision):
+            leg1 = inverseKinematics(curr_pos[0])
+            leg2 = inverseKinematics(curr_pos[1])
+            leg3 = inverseKinematics(curr_pos[2])
+            leg4 = inverseKinematics(parabola_motion_4[index])
+            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
+            vrep_socket.send(msg)
+        curr_pos[3] = parabola_motion_4[index]
+
+    elif curr_pos[3][0] > 0:
+        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, step_height, -200, precision)
+
+
+    # parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+    # parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, step_height, -200, precision)
+    # parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, step_height, -200, precision)
+    # parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, step_height, -200, precision)
+
 
     for index in range(0, precision):
-        leg1 = inverseKinematics(parabola_motion[index])
-        leg2 = inverseKinematics(curr_pos[1])
-        leg3 = inverseKinematics(curr_pos[2])
-        leg4 = inverseKinematics(curr_pos[3])
+        if curr_pos[0][0] != 0:
+            leg1 = inverseKinematics(parabola_motion_1[index])
+        if curr_pos[1][0] != 0:
+            leg2 = inverseKinematics(parabola_motion_2[index])
+        if curr_pos[2][0] != 0:
+            leg3 = inverseKinematics(parabola_motion_3[index])
+        if curr_pos[3][0] != 0:
+            leg4 = inverseKinematics(parabola_motion_4[index])
+
         msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        print msg
         vrep_socket.send(msg)
 
 
