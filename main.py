@@ -44,39 +44,30 @@ def main():
     # jump(-150, -300, 2)
 
     step_angle = 90
-    while True:
-        print step_angle
-        walk_dir(150, -20, step_angle, 1, 250)
+    step_length = 100
+    step_height = 0
+    step_precision = 250
+    # while True:
+    #     print step_angle
+        # balanceTest(-100, -260, 150)
+
+    curr_pos = walk_dir(step_length, step_height, step_angle, 1, step_precision)
+    print curr_pos
+    homePos(curr_pos)
         # time.sleep(.25)
         # step_angle -= 5
-        print "Done Moving"
+        # print "Done Moving"
 
     # thread to continually check for user input
 
-    # need function for walking
-    # def walk(direction, speed):
-    #   global curr_pos
-    #   step1 = [1, 0, 0]
-    #   step2 = [-1, 0, 0]
-    #
-    #   step_to(leg, curr_pos, new_pos, step_height)
-    #
-
-    # execute walking trajectory
-    # while (leg1_q.empty() != True or leg2_q.empty() != True):
-    #     leg1_pos = leg1_q.get(2)
-    #     print leg1_pos[0]
-        # print leg2_q.get()
-        # print leg3_q.get()
-        # print leg4_q.get()
 
 # walking gait, can walk in a direction and particular number of steps.
 # The precision is the number incremental steps between the start and stop motions
 def walk_dir(step_length, step_height, degrees, step_num, precision):
     #calculate the walking trajectory of one step
     # walking_trajectory = piecewiseMotion(step_length, step_height, degrees, precision)
-    walking_trajectory_R = piecewiseMotion_3(step_length, step_height, degrees, -230, precision)
-    walking_trajectory_L = piecewiseMotion_3(step_length, step_height, degrees - 180, -230, precision)
+    walking_trajectory_R = piecewiseMotion_3(step_length, step_height, degrees, -200, precision)
+    walking_trajectory_L = piecewiseMotion_3(step_length, step_height, degrees - 180, -200, precision)
 
     # initialize the index of each leg, offset all of them
     FL_leg_index = 0
@@ -126,6 +117,8 @@ def walk_dir(step_length, step_height, degrees, step_num, precision):
         if leg_index[3] >= precision:
             leg_index[3] = 0
 
+    return [walking_trajectory_R[leg_index[0]], walking_trajectory_R[leg_index[1]], walking_trajectory_L[leg_index[2]], walking_trajectory_L[leg_index[3]]]
+
 
 def jump(high_pt, low_pt, precision):
     z_trajectory = np.linspace(high_pt, low_pt, precision)
@@ -147,6 +140,7 @@ def jump(high_pt, low_pt, precision):
     decrease_index = 0
 
     while(True):
+        print final_trajectory[leg_index[1]]
         leg1 = inverseKinematics(final_trajectory[leg_index[1]])
         leg2 = inverseKinematics(final_trajectory[leg_index[0]])
         leg3 = inverseKinematics(final_trajectory[leg_index[2]])
@@ -154,6 +148,45 @@ def jump(high_pt, low_pt, precision):
         msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
         vrep_socket.send(msg)
         time.sleep(.5)
+
+        if leg_index[0] == precision - 1:
+            decrease_index = 1
+
+        if leg_index[0] == 0:
+            decrease_index = 0
+
+        if decrease_index == 0:
+            leg_index = [x + 1 for x in leg_index]
+        elif decrease_index == 1:
+            leg_index = [x - 1 for x in leg_index]
+
+
+def balanceTest(high_pt, low_pt, precision):
+    z_trajectory = np.linspace(high_pt, low_pt, precision)
+    x_trajectory = np.zeros((precision, 1))
+    y_trajectory = np.zeros((precision, 1))
+
+    final_trajectory = []
+
+    # create matrix of all positions along trajectory
+    for i in range(precision):
+        final_trajectory.append([x_trajectory[i][0], y_trajectory[i][0], z_trajectory[i]])
+
+    FL_leg_index = 0
+    FR_leg_index = 0
+    HL_leg_index = 0
+    HR_leg_index = 0
+    leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
+
+    decrease_index = 0
+
+    while(True):
+        leg1 = inverseKinematics(final_trajectory[leg_index[0]])
+        leg2 = inverseKinematics([-50, -25, low_pt])
+        leg3 = inverseKinematics([0, 25, low_pt])
+        leg4 = inverseKinematics([0, 25, low_pt])
+        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        vrep_socket.send(msg)
 
         if leg_index[0] == precision - 1:
             decrease_index = 1
@@ -229,6 +262,7 @@ def add_leg1(first_pos, new_pos):
 
 
 def moveToPos(trajectory_R, trajectory_L, index):
+    print trajectory_R[index[0]]
     leg1 = inverseKinematics(trajectory_R[index[0]])
     leg2 = inverseKinematics(trajectory_R[index[1]])
     leg3 = inverseKinematics(trajectory_L[index[2]])
@@ -239,7 +273,31 @@ def moveToPos(trajectory_R, trajectory_L, index):
     # leg3 = [0.5, 0.5, 0.5]
     # leg4 = [0.5, 0.5, 0.5]
     msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+    #time.sleep(0.05)
     vrep_socket.send(msg)
+
+
+def homePos(curr_pos):
+    home_pos = [0, 0, -200]
+    step_height = 75
+    precision = 150
+
+    leg_1_pos = curr_pos[0]
+    leg2 = curr_pos[1]
+    leg3 = curr_pos[2]
+    leg4 = curr_pos[3]
+
+    parabola_motion = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+
+    for index in range(0, precision):
+        leg1 = inverseKinematics(parabola_motion[index])
+        leg2 = inverseKinematics(curr_pos[1])
+        leg3 = inverseKinematics(curr_pos[2])
+        leg4 = inverseKinematics(curr_pos[3])
+        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        print msg
+        vrep_socket.send(msg)
+
 
 if __name__ == "__main__":
     main()
