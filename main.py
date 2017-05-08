@@ -48,11 +48,11 @@ def main():
 
     ## for control of Delta Quad through BBB
     # HOST2 = '129.21.90.114'
-    HOST2 = '192.168.7.2'
-    PORT2 = 12345
-    global bbb_socket
-    bbb_socket = socket.socket()
-    bbb_socket.connect((HOST2, PORT2))
+    # HOST2 = '192.168.7.2'
+    # PORT2 = 12345
+    # global bbb_socket
+    # bbb_socket = socket.socket()
+    # bbb_socket.connect((HOST2, PORT2))
 
     time.sleep(1)
 
@@ -71,22 +71,27 @@ def main():
     # for small steps
     step_angle = 90
     step_length = 50
-    step_height = 100
-    step_precision = 100
+    step_height = 125
+    step_precision = 150
     num_steps = 1
 
+    curr_pos = [[0, 0, -250], [0, 0, -250], [0, 0, -250], [0, 0, -250]]
 
     while True:
-        curr_pos = startPos()
+        while blynk_power == 0:
+            try:
+                curr_pos = startPos()
+            except:
+                curr_pos = startPos()
         while blynk_power == 1:
             #urr_pos = walk_dir(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
-
-            curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
 
             while blynk_radius < 500:
                 print "NOT MOVING"
                 print blynk_radius
                 curr_pos = homePos(curr_pos, 0.5)
+
+            curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
 
             # if blynk_radius > 500:
             #     if blynk_angle < step_angle - 10 or blynk_angle > step_angle + 10:
@@ -96,10 +101,7 @@ def main():
 
         curr_pos = homePos(curr_pos, 0.001)
         print "Stop Walking"
-        # homePos(curr_pos, 5)
-        # time.sleep(3)
-        # step_angle += 45
-        # print "Done Moving"
+
 
 
 # walking gait, can walk in a direction and particular number of steps.
@@ -182,8 +184,8 @@ def walk_dir(curr_pos, step_length, step_height, degrees, step_num, precision):
 def walk_small(curr_pos, step_length, step_height, degrees, step_num, precision):
     #calculate the walking trajectory of one step
     # walking_trajectory = piecewiseMotion(step_length, step_height, degrees, precision)
-    walking_trajectory_R = piecewiseMotion_2(step_length, step_height, degrees, -225, precision)
-    walking_trajectory_L = piecewiseMotion_2(step_length, step_height, degrees - 180, -225, precision)
+    walking_trajectory_R = piecewiseMotion_2(step_length, step_height, degrees, -250, precision)
+    walking_trajectory_L = piecewiseMotion_2(step_length, step_height, degrees - 180, -250, precision)
 
     # initialize the index of each leg, offset all of them
     FL_leg_index = 0
@@ -420,22 +422,24 @@ def moveToPos(trajectory_R, trajectory_L, index):
     # bbb_socket.send(msg)
 
 def startPos():
-    home_pos = [0, 0, -200]
+    print "BLYNK HEIGHT: ", blynk_height
+    home_pos = [0, 0, blynk_height]
 
-    while blynk_power == 0:
-        print "BLYNK POWER: ", blynk_power
-        leg1 = inverseKinematics(home_pos)
-        leg2 = inverseKinematics(home_pos)
-        leg3 = inverseKinematics(home_pos)
-        leg4 = inverseKinematics(home_pos)
-        sendAngleCommands(leg1, leg2, leg3, leg4)
-
+    # while blynk_power == 0:
     print "BLYNK POWER: ", blynk_power
-    print "Starting..."
+    print "BLYNK HEIGHT: ", blynk_height
+    leg1 = inverseKinematics(home_pos)
+    leg2 = inverseKinematics(home_pos)
+    leg3 = inverseKinematics(home_pos)
+    leg4 = inverseKinematics(home_pos)
+    sendAngleCommands(leg1, leg2, leg3, leg4)
+
+    # print "BLYNK POWER: ", blynk_power
+    # print "Starting..."
     return [home_pos, home_pos, home_pos, home_pos]
 
 def homePos(curr_pos, delay_time):
-    home_pos = [0, 0, -200]
+    home_pos = [0, 0, -250]
     step_height = 75
     precision = 75
 
@@ -446,7 +450,7 @@ def homePos(curr_pos, delay_time):
 
 
     if curr_pos[0][0] > 0:
-        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, 0, -200, precision)
+        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, 0, -250, precision)
         for index in range(0, precision):
             leg1 = inverseKinematics(parabola_motion_1[index])
             leg2 = inverseKinematics(curr_pos[1])
@@ -459,12 +463,12 @@ def homePos(curr_pos, delay_time):
         curr_pos[0] = parabola_motion_1[index]
 
     elif curr_pos[0][0] < 0:
-        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+        parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -250, precision)
     else:
         return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[1][0] > 0:
-        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, 0, -200, precision)
+        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, 0, -250, precision)
         for index in range(0, precision):
             leg1 = inverseKinematics(curr_pos[0])
             leg2 = inverseKinematics(parabola_motion_2[index])
@@ -477,12 +481,12 @@ def homePos(curr_pos, delay_time):
         curr_pos[1] = parabola_motion_2[index]
 
     elif curr_pos[1][0] < 0:
-        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, step_height, -200, precision)
+        parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, step_height, -250, precision)
     else:
         return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[2][0] < 0:
-        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, 0, -200, precision)
+        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, 0, -250, precision)
         for index in range(0, precision):
             leg1 = inverseKinematics(curr_pos[0])
             leg2 = inverseKinematics(curr_pos[1])
@@ -495,12 +499,12 @@ def homePos(curr_pos, delay_time):
         curr_pos[2] = parabola_motion_3[index]
 
     elif curr_pos[2][0] > 0:
-        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, step_height, -200, precision)
+        parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, step_height, -250, precision)
     else:
         return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[3][0] < 0:
-        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, 0, -200, precision)
+        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, 0, -250, precision)
         for index in range(0, precision):
             leg1 = inverseKinematics(curr_pos[0])
             leg2 = inverseKinematics(curr_pos[1])
@@ -513,7 +517,7 @@ def homePos(curr_pos, delay_time):
         curr_pos[3] = parabola_motion_4[index]
 
     elif curr_pos[3][0] > 0:
-        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, step_height, -200, precision)
+        parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, step_height, -250, precision)
     else:
         return [home_pos, home_pos, home_pos, home_pos]
 
@@ -545,7 +549,7 @@ def homePos(curr_pos, delay_time):
 def sendAngleCommands(leg1, leg2, leg3, leg4):
     msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
     vrep_socket.send(msg)
-    bbb_socket.send(msg)
+    # bbb_socket.send(msg)
     time.sleep(0.010)
 
 def blynk_controller():
@@ -563,18 +567,18 @@ def blynk_controller():
         time.sleep(0.5)
 
     # create objects
-    # slider_height = Blynk(auth_token, pin="V0")
+    slider_height = Blynk(auth_token, pin="V0")
     joystick_pos = Blynk(auth_token, pin="V1")
     power_button = Blynk(auth_token, pin="V3")
 
     # get current status
     while (1):
         curr_power = power_button.get_val()
-        # curr_height = slider_height.get_val()
+        curr_height = slider_height.get_val()
         curr_pos = joystick_pos.get_val()
 
         blynk_power = int(curr_power[0])
-        # blynk_height = int(curr_height[0])
+        blynk_height = int(curr_height[0])
         blynk_x_pos = (512 - int(curr_pos[0]))
         blynk_y_pos = -(512 - int(curr_pos[1]))
 

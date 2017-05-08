@@ -32,10 +32,10 @@ def piecewiseMotion_2(step_length, step_height, step_angle, leg_height, step_pre
     # step_precision = the number of step increments the motion will be broken into (the more the better precision)
 
     # define the percentage of time it takes to lift the leg
-    step_up_time = float(0.2)
+    step_up_time = float(0.15)
 
     # define the two end points based on the step length and the angle of the step
-    pos_0 = np.array([-step_length*np.sin(np.deg2rad(step_angle)), -step_length*np.cos(np.deg2rad(step_angle)), leg_height])
+    pos_0 = np.array([-step_length*np.sin(np.deg2rad(step_angle)), -step_length*np.cos(np.deg2rad(step_angle)), leg_height-20])
     pos_1 = np.array([step_length*np.sin(np.deg2rad(step_angle)), step_length*np.cos(np.deg2rad(step_angle)), leg_height])
 
     # create increments of time
@@ -66,6 +66,7 @@ def piecewiseMotion_2(step_length, step_height, step_angle, leg_height, step_pre
         piecewise.append([piecewise_x[i], piecewise_y[i], piecewise_z[i]])
 
     return piecewise
+
 
 def piecewiseMotion_3(step_length, step_height, step_angle, leg_height, step_precision):
     # step_length = the distance the leg will step relative to the origin
