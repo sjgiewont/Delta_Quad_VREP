@@ -14,7 +14,7 @@ from threading import Thread
 import numpy as np
 import pickle
 
-MAX_LENGTH = 95
+MAX_LENGTH = 96
 
 def recieve_socket_commands(clientsocket, clientID):
   angle = 4.5
@@ -24,10 +24,10 @@ def recieve_socket_commands(clientsocket, clientID):
     # receive the commands here
     # buf = clientsocket.recv(MAX_LENGTH)
 
-    buf = clientsocket.recv(500)
+    buf = clientsocket.recv(MAX_LENGTH)
     buf_string = buf.decode()
     buf_array = buf_string.split(",", 11)
-    print("The buf_array:", buf_array)
+    # print("The buf_array:", buf_array)
     if len(buf_array) != 12:
         buf = ''
         break
@@ -47,7 +47,6 @@ def recieve_socket_commands(clientsocket, clientID):
         errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
         errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
         errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
-        print(float(buf_array[11]))
 
     # if buf == b'\n':
     #     print("hello")

@@ -9,7 +9,12 @@ import time
 from subprocess import call
 import socket
 from threading import Thread
+from Blynk import *
 import pickle
+
+# blynk_power = 0
+# blynk_x_pos = 0
+# blynk_y_pos = 0
 
 
 def callPython3VREPControl():
@@ -25,23 +30,31 @@ def main():
     vrep_control_thread.start()
 
     # give the Python3 script some time to establish connection to VREP
-    time.sleep(2)
+    # time.sleep(2)
     print "Ready to send commands to Python3 Script"
 
+    print "Starting Blynk Connection"
+    blynk_control_thread = Thread(target=blynk_controller, args=())
+    blynk_control_thread.start()
+
+    time.sleep(2)
+
+    ## for vrep simulation
     HOST = '127.0.0.1'
     PORT = 10000
     global vrep_socket
     vrep_socket = socket.socket()
     vrep_socket.connect((HOST, PORT))
 
-    HOST2 = '129.21.90.103'
+    ## for control of Delta Quad through BBB
+    # HOST2 = '129.21.90.114'
+    HOST2 = '192.168.7.2'
     PORT2 = 12345
     global bbb_socket
     bbb_socket = socket.socket()
     bbb_socket.connect((HOST2, PORT2))
 
-    # print "Start VREP Server"
-    # client_id = startVREP()
+    time.sleep(1)
 
     print "Open ANFIS"
     anf = loadAnfisNetwork()
@@ -49,23 +62,49 @@ def main():
 
     # jump(-150, -300, 2)
 
+    # step_angle = 90
+    # step_length = 100
+    # step_height = 0
+    # step_precision = 300
+    # num_steps = 1
+
+    # for small steps
     step_angle = 90
-    step_length = 100
-    step_height = 0
-    step_precision = 250
-    num_steps = 3
+    step_length = 50
+    step_height = 100
+    step_precision = 100
+    num_steps = 1
+
 
     while True:
-        curr_pos = walk_dir(step_length, step_height, step_angle, num_steps, step_precision)
-        homePos(curr_pos)
-        time.sleep(2)
-        step_angle += 45
+        curr_pos = startPos()
+        while blynk_power == 1:
+            #urr_pos = walk_dir(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+
+            curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+
+            while blynk_radius < 500:
+                print "NOT MOVING"
+                print blynk_radius
+                curr_pos = homePos(curr_pos, 0.5)
+
+            # if blynk_radius > 500:
+            #     if blynk_angle < step_angle - 10 or blynk_angle > step_angle + 10:
+            #         curr_pos = homePos(curr_pos, 0.5)
+
+            step_angle = blynk_angle
+
+        curr_pos = homePos(curr_pos, 0.001)
+        print "Stop Walking"
+        # homePos(curr_pos, 5)
+        # time.sleep(3)
+        # step_angle += 45
         # print "Done Moving"
 
 
 # walking gait, can walk in a direction and particular number of steps.
 # The precision is the number incremental steps between the start and stop motions
-def walk_dir(step_length, step_height, degrees, step_num, precision):
+def walk_dir(curr_pos, step_length, step_height, degrees, step_num, precision):
     #calculate the walking trajectory of one step
     # walking_trajectory = piecewiseMotion(step_length, step_height, degrees, precision)
     walking_trajectory_R = piecewiseMotion_3(step_length, step_height, degrees, -200, precision)
@@ -81,21 +120,32 @@ def walk_dir(step_length, step_height, degrees, step_num, precision):
 
     steps = 0
     home_pos = [0, 0, -200]
-    start_step_precision = 150
+    start_step_precision = 75
 
-    parabola_motion_2 = parabolaStep(home_pos, walking_trajectory_L[FR_leg_index], 75, -200, start_step_precision)
-    parabola_motion_3 = parabolaStep(home_pos, walking_trajectory_R[HL_leg_index], 75, -200, start_step_precision)
+    if curr_pos == [home_pos, home_pos, home_pos, home_pos]:
+        parabola_motion_2 = parabolaStep(home_pos, walking_trajectory_L[FR_leg_index], 75, -200, start_step_precision)
+        parabola_motion_3 = parabolaStep(home_pos, walking_trajectory_R[HL_leg_index], 75, -200, start_step_precision)
 
-    for index in range(0,start_step_precision):
-        leg1 = inverseKinematics(home_pos)
-        leg2 = inverseKinematics(parabola_motion_2[index])
-        leg3 = inverseKinematics(parabola_motion_3[index])
-        leg4 = inverseKinematics(home_pos)
-        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        vrep_socket.send(msg)
-        bbb_socket.send(msg)
+        for index in range(0,start_step_precision):
+            leg1 = inverseKinematics(home_pos)
+            leg2 = inverseKinematics(parabola_motion_2[index])
+            leg3 = inverseKinematics(parabola_motion_3[index])
+            leg4 = inverseKinematics(home_pos)
+            sendAngleCommands(leg1, leg2, leg3, leg4)
 
+    else:
+        start_step_precision = 2
+        parabola_motion_1 = parabolaStep(curr_pos[0], walking_trajectory_L[FR_leg_index], 0, -200, start_step_precision)
+        parabola_motion_2 = parabolaStep(curr_pos[1], walking_trajectory_L[FR_leg_index], 0, -200, start_step_precision)
+        parabola_motion_3 = parabolaStep(curr_pos[2], walking_trajectory_R[HL_leg_index], 0, -200, start_step_precision)
+        parabola_motion_4 = parabolaStep(curr_pos[3], walking_trajectory_R[HL_leg_index], 0, -200, start_step_precision)
 
+        for index in range(0,start_step_precision):
+            leg1 = inverseKinematics(parabola_motion_1[index])
+            leg2 = inverseKinematics(parabola_motion_2[index])
+            leg3 = inverseKinematics(parabola_motion_3[index])
+            leg4 = inverseKinematics(parabola_motion_4[index])
+            sendAngleCommands(leg1, leg2, leg3, leg4)
 
     # step a certain amount of times
     while(steps < step_num):
@@ -127,6 +177,85 @@ def walk_dir(step_length, step_height, degrees, step_num, precision):
     return [walking_trajectory_R[leg_index[0]], walking_trajectory_R[leg_index[1]], walking_trajectory_L[leg_index[2]], walking_trajectory_L[leg_index[3]]]
 
 
+# walking gait, can walk in a direction and particular number of steps.
+# The precision is the number incremental steps between the start and stop motions
+def walk_small(curr_pos, step_length, step_height, degrees, step_num, precision):
+    #calculate the walking trajectory of one step
+    # walking_trajectory = piecewiseMotion(step_length, step_height, degrees, precision)
+    walking_trajectory_R = piecewiseMotion_2(step_length, step_height, degrees, -225, precision)
+    walking_trajectory_L = piecewiseMotion_2(step_length, step_height, degrees - 180, -225, precision)
+
+    # initialize the index of each leg, offset all of them
+    FL_leg_index = 0
+    FR_leg_index = precision / 4
+    HL_leg_index = 2 * (precision / 4)
+    HR_leg_index = 3 * (precision / 4)
+
+    leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
+
+    steps = 0
+    home_pos = [0, 0, -200]
+    start_step_precision = 100
+
+    if curr_pos == [home_pos, home_pos, home_pos, home_pos]:
+        parabola_motion_1 = linearStep(home_pos, walking_trajectory_L[FL_leg_index], -200, start_step_precision)
+        parabola_motion_2 = parabolaStep(home_pos, walking_trajectory_L[FR_leg_index], 75, -200, start_step_precision)
+        parabola_motion_3 = parabolaStep(home_pos, walking_trajectory_R[HL_leg_index], 75, -200, start_step_precision)
+        parabola_motion_4 = linearStep(home_pos, walking_trajectory_R[HR_leg_index], -200, start_step_precision)
+
+        for index in range(0,start_step_precision):
+            leg1 = inverseKinematics(parabola_motion_1[index])
+            leg2 = inverseKinematics(parabola_motion_2[index])
+            leg3 = inverseKinematics(parabola_motion_3[index])
+            leg4 = inverseKinematics(parabola_motion_4[index])
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+
+    else:
+        start_step_precision = 2
+        parabola_motion_1 = parabolaStep(curr_pos[0], walking_trajectory_L[FR_leg_index], 0, -200, start_step_precision)
+        parabola_motion_2 = parabolaStep(curr_pos[1], walking_trajectory_L[FR_leg_index], 0, -200, start_step_precision)
+        parabola_motion_3 = parabolaStep(curr_pos[2], walking_trajectory_R[HL_leg_index], 0, -200, start_step_precision)
+        parabola_motion_4 = parabolaStep(curr_pos[3], walking_trajectory_R[HL_leg_index], 0, -200, start_step_precision)
+
+        for index in range(0,start_step_precision):
+            leg1 = inverseKinematics(parabola_motion_1[index])
+            leg2 = inverseKinematics(parabola_motion_2[index])
+            leg3 = inverseKinematics(parabola_motion_3[index])
+            leg4 = inverseKinematics(parabola_motion_4[index])
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+
+    # step a certain amount of times
+    while(steps < step_num):
+        # print "Front Left:", walking_trajectory[FL_leg_index]
+        # print "Front Right:", walking_trajectory[FR_leg_index]
+        # print "Hind Left:", walking_trajectory[HL_leg_index]
+        # print "Hind Right:", walking_trajectory[HR_leg_index]
+
+        # move_to_pos(walking_trajectory[FL_leg_index], 1)
+
+        moveToPos(walking_trajectory_R, walking_trajectory_L, leg_index)
+
+        leg_index = [x+1 for x in leg_index]
+
+        # if reached index limit, loop back and restart index count
+        if leg_index[0] >= precision:
+            leg_index[0] = 0
+            steps += 1                  # keep track of the number of steps taken
+
+        if leg_index[1] >= precision:
+            leg_index[1] = 0
+
+        if leg_index[2] >= precision:
+            leg_index[2] = 0
+
+        if leg_index[3] >= precision:
+            leg_index[3] = 0
+
+    return [walking_trajectory_R[leg_index[0]], walking_trajectory_R[leg_index[1]], walking_trajectory_L[leg_index[2]], walking_trajectory_L[leg_index[3]]]
+
+
+
+
 def jump(high_pt, low_pt, precision):
     z_trajectory = np.linspace(high_pt, low_pt, precision)
     x_trajectory = np.zeros((precision, 1))
@@ -152,9 +281,10 @@ def jump(high_pt, low_pt, precision):
         leg2 = inverseKinematics(final_trajectory[leg_index[0]])
         leg3 = inverseKinematics(final_trajectory[leg_index[2]])
         leg4 = inverseKinematics(final_trajectory[leg_index[3]])
-        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        vrep_socket.send(msg)
-        bbb_socket.send(msg)
+        sendAngleCommands(leg1, leg2, leg3, leg4)
+        # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        # # vrep_socket.send(msg)
+        # bbb_socket.send(msg)
         time.sleep(.5)
 
         if leg_index[0] == precision - 1:
@@ -193,9 +323,10 @@ def balanceTest(high_pt, low_pt, precision):
         leg2 = inverseKinematics([-50, -25, low_pt])
         leg3 = inverseKinematics([0, 25, low_pt])
         leg4 = inverseKinematics([0, 25, low_pt])
-        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        vrep_socket.send(msg)
-        bbb_socket.send(msg)
+        sendAngleCommands(leg1, leg2, leg3, leg4)
+        # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        # # vrep_socket.send(msg)
+        # bbb_socket.send(msg)
 
         if leg_index[0] == precision - 1:
             decrease_index = 1
@@ -282,16 +413,31 @@ def moveToPos(trajectory_R, trajectory_L, index):
     # leg2 = [0.5, 0.5, 0.5]
     # leg3 = [0.5, 0.5, 0.5]
     # leg4 = [0.5, 0.5, 0.5]
-    msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+    sendAngleCommands(leg1, leg2, leg3, leg4)
+    # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
     #time.sleep(0.05)
-    vrep_socket.send(msg)
-    bbb_socket.send(msg)
+    # # vrep_socket.send(msg)
+    # bbb_socket.send(msg)
 
+def startPos():
+    home_pos = [0, 0, -200]
 
-def homePos(curr_pos):
+    while blynk_power == 0:
+        print "BLYNK POWER: ", blynk_power
+        leg1 = inverseKinematics(home_pos)
+        leg2 = inverseKinematics(home_pos)
+        leg3 = inverseKinematics(home_pos)
+        leg4 = inverseKinematics(home_pos)
+        sendAngleCommands(leg1, leg2, leg3, leg4)
+
+    print "BLYNK POWER: ", blynk_power
+    print "Starting..."
+    return [home_pos, home_pos, home_pos, home_pos]
+
+def homePos(curr_pos, delay_time):
     home_pos = [0, 0, -200]
     step_height = 75
-    precision = 150
+    precision = 75
 
     leg_1_pos = curr_pos[0]
     leg_2_pos = curr_pos[1]
@@ -306,13 +452,16 @@ def homePos(curr_pos):
             leg2 = inverseKinematics(curr_pos[1])
             leg3 = inverseKinematics(curr_pos[2])
             leg4 = inverseKinematics(curr_pos[3])
-            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-            vrep_socket.send(msg)
-            bbb_socket.send(msg)
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+            # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+            # # vrep_socket.send(msg)
+            # bbb_socket.send(msg)
         curr_pos[0] = parabola_motion_1[index]
 
     elif curr_pos[0][0] < 0:
         parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
+    else:
+        return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[1][0] > 0:
         parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, 0, -200, precision)
@@ -321,13 +470,16 @@ def homePos(curr_pos):
             leg2 = inverseKinematics(parabola_motion_2[index])
             leg3 = inverseKinematics(curr_pos[2])
             leg4 = inverseKinematics(curr_pos[3])
-            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-            vrep_socket.send(msg)
-            bbb_socket.send(msg)
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+            # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+            # # vrep_socket.send(msg)
+            # bbb_socket.send(msg)
         curr_pos[1] = parabola_motion_2[index]
 
     elif curr_pos[1][0] < 0:
         parabola_motion_2 = parabolaStep(leg_2_pos, home_pos, step_height, -200, precision)
+    else:
+        return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[2][0] < 0:
         parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, 0, -200, precision)
@@ -336,13 +488,16 @@ def homePos(curr_pos):
             leg2 = inverseKinematics(curr_pos[1])
             leg3 = inverseKinematics(parabola_motion_3[index])
             leg4 = inverseKinematics(curr_pos[3])
-            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
-            vrep_socket.send(msg)
-            bbb_socket.send(msg)
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+            # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
+            # # vrep_socket.send(msg)
+            # bbb_socket.send(msg)
         curr_pos[2] = parabola_motion_3[index]
 
     elif curr_pos[2][0] > 0:
         parabola_motion_3 = parabolaStep(leg_3_pos, home_pos, step_height, -200, precision)
+    else:
+        return [home_pos, home_pos, home_pos, home_pos]
 
     if curr_pos[3][0] < 0:
         parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, 0, -200, precision)
@@ -351,13 +506,16 @@ def homePos(curr_pos):
             leg2 = inverseKinematics(curr_pos[1])
             leg3 = inverseKinematics(curr_pos[2])
             leg4 = inverseKinematics(parabola_motion_4[index])
-            msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
-            vrep_socket.send(msg)
-            bbb_socket.send(msg)
+            sendAngleCommands(leg1, leg2, leg3, leg4)
+            # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1],leg4[2])
+            # # vrep_socket.send(msg)
+            # bbb_socket.send(msg)
         curr_pos[3] = parabola_motion_4[index]
 
     elif curr_pos[3][0] > 0:
         parabola_motion_4 = parabolaStep(leg_4_pos, home_pos, step_height, -200, precision)
+    else:
+        return [home_pos, home_pos, home_pos, home_pos]
 
 
     # parabola_motion_1 = parabolaStep(leg_1_pos, home_pos, step_height, -200, precision)
@@ -376,9 +534,60 @@ def homePos(curr_pos):
         if curr_pos[3][0] != 0:
             leg4 = inverseKinematics(parabola_motion_4[index])
 
-        msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
-        vrep_socket.send(msg)
-        bbb_socket.send(msg)
+        sendAngleCommands(leg1, leg2, leg3, leg4)
+        # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        # # vrep_socket.send(msg)
+        # bbb_socket.send(msg)
+
+    time.sleep(delay_time)
+    return [home_pos, home_pos, home_pos, home_pos]
+
+def sendAngleCommands(leg1, leg2, leg3, leg4):
+    msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+    vrep_socket.send(msg)
+    bbb_socket.send(msg)
+    time.sleep(0.010)
+
+def blynk_controller():
+    global blynk_power, blynk_height, blynk_x_pos, blynk_y_pos, blynk_radius, blynk_angle
+
+    # defualt case, turn off
+    blynk_power = 0
+
+    auth_token = "340c28ef62d94a998855b7c8d4b89651"
+
+    blynk = Blynk(auth_token)
+
+    while not blynk.app_status():
+        print "Phone not connected"
+        time.sleep(0.5)
+
+    # create objects
+    # slider_height = Blynk(auth_token, pin="V0")
+    joystick_pos = Blynk(auth_token, pin="V1")
+    power_button = Blynk(auth_token, pin="V3")
+
+    # get current status
+    while (1):
+        curr_power = power_button.get_val()
+        # curr_height = slider_height.get_val()
+        curr_pos = joystick_pos.get_val()
+
+        blynk_power = int(curr_power[0])
+        # blynk_height = int(curr_height[0])
+        blynk_x_pos = (512 - int(curr_pos[0]))
+        blynk_y_pos = -(512 - int(curr_pos[1]))
+
+        # print blynk_x_pos, blynk_y_pos
+
+        blynk_radius = np.sqrt(blynk_x_pos * blynk_x_pos + blynk_y_pos * blynk_y_pos)
+
+        if blynk_radius > 500:
+            blynk_angle = np.around(np.rad2deg(np.arctan2(blynk_y_pos, blynk_x_pos)))
+            print blynk_angle
+
+        time.sleep(0.001)
+
 
 if __name__ == "__main__":
     main()
