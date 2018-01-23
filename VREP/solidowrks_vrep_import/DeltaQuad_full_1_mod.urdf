@@ -1,0 +1,248 @@
+<robot name="DeltaQuad_full_1">
+  <link name="DeltaQuad_1-3">
+    <inertial>
+      <origin xyz="0.65592503326 -0.219784 0.481154882203" rpy="0 0 0"/>
+      <mass value="0.271846"/>
+      <inertia ixx="0.00220624" ixy="-4.16356e-06" ixz="-8.15648e-07" iyy="0.00112052" iyz="-0.000206404" izz="0.0021791"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.604612127526 -0.336628 0.355512430977" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-3.stl"/>
+      </geometry>
+      <material name="DeltaQuad_1-3_color">
+        <color rgba="0.752941 0.752941 0.752941 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.604612127526 -0.336628 0.355512430977" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="deltaquad_T_Slot_12-3">
+    <inertial>
+      <origin xyz="0.175324060885 0.0419018298749 0.046945" rpy="0 0 0"/>
+      <mass value="0.127088"/>
+      <inertia ixx="1.61579e-05" ixy="1.02538e-11" ixz="2.68988e-12" iyy="0.00174989" iyz="1.61438e-12" izz="0.00174948"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-3.stl"/>
+      </geometry>
+      <material name="deltaquad_T_Slot_12-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-3--DeltaQuad_1-3" type="fixed">
+    <origin xyz="0.361537901224 -0.242183 0.256195688622" rpy="1.57079632679 -0.52359826362 0"/>
+    <parent link="DeltaQuad_1-3"/>
+    <child link="deltaquad_T_Slot_12-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_middle_bracket_1-1">
+    <inertial>
+      <origin xyz="-0.036 0.001 -0.0359999" rpy="0 0 0"/>
+      <mass value="0.0100753"/>
+      <inertia ixx="4.27409e-06" ixy="0.0" ixz="0.0" iyy="8.57898e-06" iyz="0.0" izz="4.31161e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_middle_bracket_1-1.stl"/>
+      </geometry>
+      <material name="deltaquad_middle_bracket_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_middle_bracket_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-3--deltaquad_middle_bracket_1-1" type="fixed">
+    <origin xyz="-0.0948108140906 0.066047124477 0.059645" rpy="1.57079632679 0 -2.6179937698"/>
+    <parent link="deltaquad_T_Slot_12-3"/>
+    <child link="deltaquad_middle_bracket_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_T_Slot_12-5">
+    <inertial>
+      <origin xyz="0.175323713482 0.041901552702 0.046945" rpy="0 0 0"/>
+      <mass value="0.127088"/>
+      <inertia ixx="1.61579e-05" ixy="1.02538e-11" ixz="2.68988e-12" iyy="0.00174989" iyz="1.61438e-12" izz="0.00174948"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-5.stl"/>
+      </geometry>
+      <material name="deltaquad_T_Slot_12-5_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-5.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-5--deltaquad_middle_bracket_1-1" type="fixed">
+    <origin xyz="-0.090545 -0.059645 -0.0392059" rpy="1.57079632679 -0.523598883792 -3.14159265359"/>
+    <parent link="deltaquad_middle_bracket_1-1"/>
+    <child link="deltaquad_T_Slot_12-5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="DeltaQuad_1-5">
+    <inertial>
+      <origin xyz="0.051312 0.116844 0.125643" rpy="0 0 0"/>
+      <mass value="0.271846"/>
+      <inertia ixx="0.00220624" ixy="-4.16356e-06" ixz="-8.15648e-07" iyy="0.00112052" iyz="-0.000206404" izz="0.0021791"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-5.stl"/>
+      </geometry>
+      <material name="DeltaQuad_1-5_color">
+        <color rgba="0.752941 0.752941 0.752941 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-5.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-5--DeltaQuad_1-5" type="fixed">
+    <origin xyz="0.260166255156 -0.0355268491461 0.094445" rpy="-1.57079632679 0 -0.523598883792"/>
+    <parent link="deltaquad_T_Slot_12-5"/>
+    <child link="DeltaQuad_1-5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_T_Slot_12-1">
+    <inertial>
+      <origin xyz="0.175323007457 0.0419023298302 0.046945" rpy="0 0 0"/>
+      <mass value="0.127088"/>
+      <inertia ixx="1.61579e-05" ixy="1.02538e-11" ixz="2.68988e-12" iyy="0.00174989" iyz="1.61438e-12" izz="0.00174948"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-1.stl"/>
+      </geometry>
+      <material name="deltaquad_T_Slot_12-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-1--deltaquad_middle_bracket_1-1" type="fixed">
+    <origin xyz="0.018546 -0.059645 -0.0327939" rpy="-1.57079632679 0.523598883792 0"/>
+    <parent link="deltaquad_middle_bracket_1-1"/>
+    <child link="deltaquad_T_Slot_12-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="DeltaQuad_1-1">
+    <inertial>
+      <origin xyz="0.0513123 0.116844 0.125643" rpy="0 0 0"/>
+      <mass value="0.271846"/>
+      <inertia ixx="0.00220624" ixy="-4.16356e-06" ixz="-8.15648e-07" iyy="0.00112052" iyz="-0.000206404" izz="0.0021791"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-1.stl"/>
+      </geometry>
+      <material name="DeltaQuad_1-1_color">
+        <color rgba="0.752941 0.752941 0.752941 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="DeltaQuad_1-1--deltaquad_T_Slot_12-1" type="fixed">
+    <origin xyz="0.260165822143 -0.0355265991461 0.094445" rpy="-1.57079632679 0 -0.523598883792"/>
+    <parent link="deltaquad_T_Slot_12-1"/>
+    <child link="DeltaQuad_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_T_Slot_12-2">
+    <inertial>
+      <origin xyz="0.175323940885 0.041902037721 0.046945" rpy="0 0 0"/>
+      <mass value="0.127088"/>
+      <inertia ixx="1.61579e-05" ixy="1.02538e-11" ixz="2.68988e-12" iyy="0.00174989" iyz="1.61438e-12" izz="0.00174948"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-2.stl"/>
+      </geometry>
+      <material name="deltaquad_T_Slot_12-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_t_slot_12-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-2--deltaquad_middle_bracket_1-1" type="fixed">
+    <origin xyz="-0.022914 -0.059645 0.0326042" rpy="-1.57079632679 -0.523598883792 0"/>
+    <parent link="deltaquad_middle_bracket_1-1"/>
+    <child link="deltaquad_T_Slot_12-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="DeltaQuad_1-2">
+    <inertial>
+      <origin xyz="0.0513126093247 0.116844 0.125642737829" rpy="0 0 0"/>
+      <mass value="0.271846"/>
+      <inertia ixx="0.00220624" ixy="-4.16356e-06" ixz="-8.15648e-07" iyy="0.00112052" iyz="-0.000206404" izz="0.0021791"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-2.stl"/>
+      </geometry>
+      <material name="DeltaQuad_1-2_color">
+        <color rgba="0.752941 0.752941 0.752941 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_full_1 - deltaquad_1-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_T_Slot_12-2--DeltaQuad_1-2" type="fixed">
+    <origin xyz="0.260165928323 -0.0355265714479 0.094445" rpy="-1.57079632679 0 -0.52359826362"/>
+    <parent link="deltaquad_T_Slot_12-2"/>
+    <child link="DeltaQuad_1-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+</robot>

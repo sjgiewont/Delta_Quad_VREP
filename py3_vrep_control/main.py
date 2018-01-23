@@ -48,47 +48,6 @@ def recieve_socket_commands(clientsocket, clientID):
         errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
         errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
 
-    # if buf == b'\n':
-    #     print("hello")
-    #     print(buffer)
-    #     buf_string = buffer.decode()
-    #     buf_array = buf_string.split(",", 11)
-    #     print("The buf_array:", buf_array)
-    #     buffer = []
-    # else:
-    #     print("The buf:", buf)
-    #     buffer += (buf)
-    #     print("The buffer is: ", buffer)
-
-
-
-    # buf_string = buf.decode()
-    # # print(buf_string)
-    # buf_array = buf_string.split(",", 11)
-    # # print(buf_array)
-    #
-    # start = timeit.default_timer()
-    #
-    # # print(int(buf_array[1]) + int(buf_array[0]))
-    # if buf == '':
-    #     return #client terminated connection
-    # if buf:
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_1, np.radians(float(buf_array[0]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_2, np.radians(float(buf_array[1]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_arm_joint_3, np.radians(float(buf_array[2]) - 180), vrep.simx_opmode_streaming)
-    #
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_1, np.radians(float(buf_array[3]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_2, np.radians(float(buf_array[4]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_0_arm_joint_3, np.radians(float(buf_array[5]) - 180), vrep.simx_opmode_streaming)
-    #
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_1, np.radians(float(buf_array[6]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_2, np.radians(float(buf_array[7]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_1_arm_joint_3, np.radians(float(buf_array[8]) - 180), vrep.simx_opmode_streaming)
-    #
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_1, np.radians(float(buf_array[9]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_2, np.radians(float(buf_array[10]) - 180), vrep.simx_opmode_streaming)
-    #     errorCode = vrep.simxSetJointTargetPosition(clientID, delta_2_arm_joint_3, np.radians(float(buf_array[11]) - 180), vrep.simx_opmode_streaming)
-
 
 # setup a socket that will recieve commands from Python2 code
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -1,0 +1,1935 @@
+<robot name="DeltaQuad_12">
+  <link name="RoBoard_RS_1270_mount_5:1">
+    <inertial>
+      <origin xyz="0.0415710999999 0.0321481000003 -0.0732387999999" rpy="0 0 0"/>
+      <mass value="0.0752694"/>
+      <inertia ixx="5.11267e-05" ixy="-6.73759e-10" ixz="1.85052e-09" iyy="9.11146e-05" iyz="3.35691e-10" izz="5.11294e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0612191999999 0.0226782000004 -0.0952379" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_mount_5_ipt_42ec5df0.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270_mount_5:1_color">
+        <color rgba="0.866667 0.486275 0.0588235 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0612191999999 0.0226782000004 -0.0952379" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_mount_5_ipt_42ec5df0.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="RoBoard_RS_1270:3">
+    <inertial>
+      <origin xyz="-0.010075 0.0203260782763 -0.0200921938622" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:3--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="0.0855341999999 0.0276782000004 -0.0245874999999" rpy="-1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:1">
+    <inertial>
+      <origin xyz="0 -0.025510877715 -0.0211501083913" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0119998983249 -0.04499968569 2.19371210308e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:1_color">
+        <color rgba="0.301961 0.301961 0.301961 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0119998983249 -0.04499968569 2.19371210308e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:1--RoBoard_RS_1270:3" type="continuous">
+    <origin xyz="-0.010075 0 -0.00999995320189" rpy="-1.57079577903 -0.146646063048 -3.14159249914"/>
+    <axis xyz="1.82296609447e-07 3.70611682565e-07 0.999999650312"/>
+    <parent link="RoBoard_RS_1270:3"/>
+    <child link="servo_C_bracket_long:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:5">
+    <inertial>
+      <origin xyz="0 0.00158742453264 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:5_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:5--servo_C_bracket_long:1" type="continuous">
+    <origin xyz="0 -0.04500015352 -0.0211500335658" rpy="0 0.523598266692 -3.14159239952"/>
+    <axis xyz="2.78812915949e-07 0.999999722115 1.60972615793e-07"/>
+    <parent link="servo_C_bracket_long:1"/>
+    <child link="10-24_nut:5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:8">
+    <inertial>
+      <origin xyz="0 0.00158743914471 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:8_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:8--10-24_nut:5" type="continuous">
+    <origin xyz="0 0.00317491314067 0" rpy="0 0 0"/>
+    <axis xyz="2.78812915949e-07 0.999999722115 1.60972615793e-07"/>
+    <parent link="10-24_nut:5"/>
+    <child link="10-24_nut:8"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:2">
+    <inertial>
+      <origin xyz="0 -0.00158747399597 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00317491314069 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:2_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00317491314069 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:2--servo_C_bracket_long:1" type="continuous">
+    <origin xyz="0 -0.0439999272601 -0.0211498699015" rpy="1.86185966241e-07 -0.00128925857278 -3.14159258768"/>
+    <axis xyz="-8.42685843883e-08 -0.999999722115 2.71858494216e-07"/>
+    <parent link="servo_C_bracket_long:1"/>
+    <child link="10-24_nut:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:3">
+    <inertial>
+      <origin xyz="0 0.0265625860257 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:2--deltaquad_armlink_2:3" type="continuous">
+    <origin xyz="0 -0.00317491314069 0" rpy="-3.14159178252 1.19290461132 -3.1415923067"/>
+    <axis xyz="9.35975268401e-08 0.999999722115 -3.70029708735e-07"/>
+    <parent link="10-24_nut:2"/>
+    <child link="deltaquad_armlink_2:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:10">
+    <inertial>
+      <origin xyz="0 0.00158745398371 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:10_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:10--deltaquad_armlink_2:3" type="continuous">
+    <origin xyz="0 0.0531251817173 0" rpy="3.92925562188e-07 -0.812245670248 3.14159195771"/>
+    <axis xyz="-1.45712390903e-07 0.999999722115 2.9876418195e-07"/>
+    <parent link="deltaquad_armlink_2:3"/>
+    <child link="10-24_nut:10"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:1">
+    <inertial>
+      <origin xyz="-0.00409239015658 0 -1.44837166413e-07" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317568825331 -0.00634999611789 0.00952456778513" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:1_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317568825331 -0.00634999611789 0.00952456778513" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:1--10-24_nut:10" type="continuous">
+    <origin xyz="0 0.00317489335532 0" rpy="-0.443266162487 -4.08172146582e-07 1.57079660361"/>
+    <axis xyz="0.999999722115 -7.15038191781e-08 -1.55061060436e-07"/>
+    <parent link="10-24_nut:10"/>
+    <child link="deltaquad_hinge_link4:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:18">
+    <inertial>
+      <origin xyz="-2.18780323788e-07 -0.00158778158638 -2.57059684039e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00317497036584 1.60801430532e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:18_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00317497036584 1.60801430532e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:18--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="-0.0118747537709 0 -0.00952509181169" rpy="1.57079611668 3.2109264364e-07 -2.26203189908"/>
+    <axis xyz="3.57764406683e-07 -1.00000030474 -2.32696263702e-07"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="10-24_nut:18"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:3">
+    <inertial>
+      <origin xyz="0 0.0127002172822 3.91622819812e-07" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:3--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="-0.0118742869172 0 -0.012525401806" rpy="1.57079656297 3.87565096127e-07 -1.60285259647"/>
+    <axis xyz="4.30385613356e-07 -1.00000030474 2.4078408084e-07"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="10-24_1_threaded_rod:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:11">
+    <inertial>
+      <origin xyz="-5.00328016476e-07 0.00158829610186 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:11_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:11--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="0.00317490796745 0 0" rpy="-3.14159204493 -1.10980473094 1.57079603198"/>
+    <axis xyz="-3.95354925464e-08 0.999999722115 -3.39681838518e-07"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="10-24_nut:11"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:20">
+    <inertial>
+      <origin xyz="-2.38391081042e-07 0.00158721457708 -4.31703526149e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:20_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:20--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="-0.0118749230126 0 0.00952495793758" rpy="1.57079611668 3.2109264364e-07 -2.26203189908"/>
+    <axis xyz="-3.57764406683e-07 1.00000030474 2.32696263702e-07"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="10-24_nut:20"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:2">
+    <inertial>
+      <origin xyz="0.0165150930924 0.00635018472153 0.0107130663491" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341421732549 0 0.0204920492071" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341421732549 0 0.0204920492071" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:2--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="-0.0118750449757 0 0.0063500245056" rpy="-1.57079632667 1.20894408817e-07 0.882809139215"/>
+    <axis xyz="8.414961436e-08 1.00000030474 -2.25851161662e-08"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="deltaquad_endrod_2:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:3">
+    <inertial>
+      <origin xyz="0 0.0905627074001 0" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:2--deltaquad_leg_3:3" type="continuous">
+    <origin xyz="0.0141423894201 0.00635022238417 0.0141418301154" rpy="3.14159164257 -1.29578712663 1.57079702945"/>
+    <axis xyz="-3.19787043235e-08 0.99999966277 4.09714507044e-08"/>
+    <parent link="deltaquad_endrod_2:2"/>
+    <child link="deltaquad_leg_3:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:28">
+    <inertial>
+      <origin xyz="0 0.00158725651517 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:28_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:28--deltaquad_leg_3:3" type="continuous">
+    <origin xyz="-2.6434446436e-07 0.181124531455 0" rpy="3.14159251814 -0.141889140793 0"/>
+    <axis xyz="4.91025484162e-08 0.99999966277 1.83854534569e-07"/>
+    <parent link="deltaquad_leg_3:3"/>
+    <child link="10-24_nut:28"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:6">
+    <inertial>
+      <origin xyz="-0.00409296244195 -2.53303907127e-07 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317514569917 -0.00635028209088 0.00952525180378" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:6_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317514569917 -0.00635028209088 0.00952525180378" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:6--10-24_nut:28" type="continuous">
+    <origin xyz="1.86296813684e-07 0.00317456004074 0" rpy="-0.428927174446 0 1.57079598955"/>
+    <axis xyz="0.99999966277 1.68133868952e-07 3.25165333548e-07"/>
+    <parent link="10-24_nut:28"/>
+    <child link="deltaquad_hinge_link4:6"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:29">
+    <inertial>
+      <origin xyz="-3.14807277052e-07 0.00158815910795 2.2078211636e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:29_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:29--deltaquad_hinge_link4:6" type="continuous">
+    <origin xyz="0.00317460705121 -2.64350909579e-07 0" rpy="6.62295885519e-07 -0.725362742605 -1.57079639091"/>
+    <axis xyz="4.19322380429e-08 0.99999966277 -2.64910176129e-07"/>
+    <parent link="deltaquad_hinge_link4:6"/>
+    <child link="10-24_nut:29"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:30">
+    <inertial>
+      <origin xyz="1.06505707143e-07 0.00158730352556 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:30_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:30--10-24_nut:29" type="continuous">
+    <origin xyz="-1.84691302169e-07 0.00317544095842 2.35499600092e-07" rpy="0 0 0"/>
+    <axis xyz="4.19322380429e-08 0.99999966277 -2.64910176129e-07"/>
+    <parent link="10-24_nut:29"/>
+    <child link="10-24_nut:30"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:34">
+    <inertial>
+      <origin xyz="-2.87597899967e-07 0.00158748278218 5.13391695739e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:34_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:34--deltaquad_hinge_link4:6" type="continuous">
+    <origin xyz="-0.0118753407591 -2.82406764085e-07 -0.00952496757506" rpy="-1.57079624474 6.1230765791e-07 -1.51756638691"/>
+    <axis xyz="1.45794271877e-07 1.00000013558 7.117979961e-08"/>
+    <parent link="deltaquad_hinge_link4:6"/>
+    <child link="10-24_nut:34"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:33">
+    <inertial>
+      <origin xyz="1.83267918237e-07 0.00158751489007 -3.74459214497e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:33_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:33--deltaquad_hinge_link4:6" type="continuous">
+    <origin xyz="-0.0118754040197 -2.66441031682e-07 0.009525013834" rpy="1.57079678416 -4.81841372857e-07 -0.488152542726"/>
+    <axis xyz="5.90923340871e-07 1.00000013558 2.14021140255e-08"/>
+    <parent link="deltaquad_hinge_link4:6"/>
+    <child link="10-24_nut:33"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:5">
+    <inertial>
+      <origin xyz="-3.53698685077e-07 0.0127000404983 5.89293999154e-07" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:5_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:5--deltaquad_hinge_link4:6" type="continuous">
+    <origin xyz="-0.0118747717965 1.30262716724e-07 -0.0125249813144" rpy="1.57079678416 -4.81841372857e-07 -0.488152542726"/>
+    <axis xyz="-5.90923340871e-07 -1.00000013558 -2.14021140255e-08"/>
+    <parent link="deltaquad_hinge_link4:6"/>
+    <child link="10-24_1_threaded_rod:5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_platform_7:1">
+    <inertial>
+      <origin xyz="0.0226021128959 -0.0117320568518 -0.0264486110833" rpy="0 0 0"/>
+      <mass value="0.00650987"/>
+      <inertia ixx="2.25536e-06" ixy="-3.45809e-12" ixz="0.0" iyy="4.28248e-06" iyz="0.0" izz="2.25536e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0226024439909 -0.0159999613421 -0.026448663084" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_platform_7_ipt_a55a889c.stl"/>
+      </geometry>
+      <material name="deltaquad_platform_7:1_color">
+        <color rgba="0.866667 0.486275 0.0588235 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0226024439909 -0.0159999613421 -0.026448663084" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_platform_7_ipt_a55a889c.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:6--deltaquad_platform_7:1" type="continuous">
+    <origin xyz="-0.0118752430442 -1.95446415913e-07 0.00635001616171" rpy="3.14159201539 1.0471977568 2.28543865086"/>
+    <axis xyz="-0.866025761006 -8.83690235987e-08 -0.499999652427"/>
+    <parent link="deltaquad_hinge_link4:6"/>
+    <child link="deltaquad_platform_7:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_5_screw:1">
+    <inertial>
+      <origin xyz="0 -0.0148289600963 0" rpy="0 0 0"/>
+      <mass value="0.00688475"/>
+      <inertia ixx="1.15347e-06" ixy="-1.80251e-17" ixz="0.0" iyy="3.17151e-08" iyz="0.0" izz="1.15347e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_5_screw_ipt_577d0c40.stl"/>
+      </geometry>
+      <material name="10-24_1_5_screw:1_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_5_screw_ipt_577d0c40.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_5_screw:1--deltaquad_platform_7:1" type="continuous">
+    <origin xyz="0.0226024409539 -0.0110000508461 -0.0264486105033" rpy="-3.14159253034 -0.416630775256 3.14159248406"/>
+    <axis xyz="9.65846633644e-08 1.0000002721 -9.62857601983e-08"/>
+    <parent link="deltaquad_platform_7:1"/>
+    <child link="10-24_1_5_screw:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_footpad:1">
+    <inertial>
+      <origin xyz="1.11247504452e-07 -0.00287309368393 0" rpy="0 0 0"/>
+      <mass value="0.0144736"/>
+      <inertia ixx="1.47529e-06" ixy="5.35274e-18" ixz="0.0" iyy="2.42153e-06" iyz="0.0" izz="1.47529e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00999984646774 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_footpad_ipt_fc6a02b1.stl"/>
+      </geometry>
+      <material name="deltaquad_footpad:1_color">
+        <color rgba="0.25098 0.25098 0.25098 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00999984646774 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_footpad_ipt_fc6a02b1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_footpad:1--10-24_1_5_screw:1" type="continuous">
+    <origin xyz="0 -0.038099251075 0" rpy="0 -0.920714793938 3.14159243537"/>
+    <axis xyz="3.02750700898e-09 1.0000002721 6.00632872327e-08"/>
+    <parent link="10-24_1_5_screw:1"/>
+    <child link="deltaquad_footpad:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_RS_1270:1">
+    <inertial>
+      <origin xyz="-0.0100750000001 0.0203262204868 -0.0200922243495" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:1--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="-0.0225458000001 0.0276782 -0.0594882999999" rpy="1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:2">
+    <inertial>
+      <origin xyz="0 -0.0255106055695 0.0211500093148" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0119999402571 -0.0449999785593 0.0423000159584" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:2_color">
+        <color rgba="0.301961 0.301961 0.301961 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0119999402571 -0.0449999785593 0.0423000159584" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:2--RoBoard_RS_1270:1" type="continuous">
+    <origin xyz="-0.010075 0 -0.0100000398043" rpy="-1.57079590831 -0.143578726034 0"/>
+    <axis xyz="1.77553448749e-08 -2.11928566529e-07 -0.999999650312"/>
+    <parent link="RoBoard_RS_1270:1"/>
+    <child link="servo_C_bracket_long:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:4">
+    <inertial>
+      <origin xyz="0 0.00158752834844 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:4_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:4--servo_C_bracket_long:2" type="continuous">
+    <origin xyz="0 -0.044999960618 0.0211500049552" rpy="-2.08466476822e-07 -0.401516454824 3.14159257857"/>
+    <axis xyz="4.00242996801e-08 0.999999741708 2.05925797636e-07"/>
+    <parent link="servo_C_bracket_long:2"/>
+    <child link="10-24_nut:4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:7">
+    <inertial>
+      <origin xyz="0 0.00158744263701 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:7_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:7--10-24_nut:4" type="continuous">
+    <origin xyz="0 0.00317507100549 0" rpy="0 0 0"/>
+    <axis xyz="4.00242996801e-08 0.999999741708 2.05925797636e-07"/>
+    <parent link="10-24_nut:4"/>
+    <child link="10-24_nut:7"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:1">
+    <inertial>
+      <origin xyz="0 -0.00158745694566 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00317498529409 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:1_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00317498529409 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:1--servo_C_bracket_long:2" type="continuous">
+    <origin xyz="0 -0.0439999980898 0.0211500455733" rpy="3.14159153565 1.21669662642 -1.48201561395e-06"/>
+    <axis xyz="-4.62273469504e-07 -0.999999741708 1.70896320151e-07"/>
+    <parent link="servo_C_bracket_long:2"/>
+    <child link="10-24_nut:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:1">
+    <inertial>
+      <origin xyz="0 0.0265625050035 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:1--deltaquad_armlink_2:1" type="continuous">
+    <origin xyz="0 -0.00317498529409 0" rpy="0 0 0"/>
+    <axis xyz="4.62273469504e-07 0.999999741708 -1.70896320151e-07"/>
+    <parent link="10-24_nut:1"/>
+    <child link="deltaquad_armlink_2:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:15">
+    <inertial>
+      <origin xyz="0 0.00158751993589 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:15_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:15--deltaquad_armlink_2:1" type="continuous">
+    <origin xyz="0 0.053124999615 0" rpy="-3.14159235351 0.384035589661 -2.91334704034e-07"/>
+    <axis xyz="-2.22516583936e-07 0.999999741708 -3.94479298282e-07"/>
+    <parent link="deltaquad_armlink_2:1"/>
+    <child link="10-24_nut:15"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:3">
+    <inertial>
+      <origin xyz="-0.00409267592059 0 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317497950415 -0.00634993166897 0.00952499328786" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:3_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317497950415 -0.00634993166897 0.00952499328786" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:3--10-24_nut:15" type="continuous">
+    <origin xyz="0 0.00317505566498 0" rpy="-0.676231907028 4.57144926136e-07 1.57079657777"/>
+    <axis xyz="0.999999741708 -6.14144624184e-08 3.10650146718e-08"/>
+    <parent link="10-24_nut:15"/>
+    <child link="deltaquad_hinge_link4:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:14">
+    <inertial>
+      <origin xyz="0 0.00158753275996 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:14_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:14--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="0.00317495119127 0 0" rpy="-3.14159262572 0.255530478744 1.57079587188"/>
+    <axis xyz="3.72869539189e-07 0.999999741708 -1.57383175658e-07"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="10-24_nut:14"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:1">
+    <inertial>
+      <origin xyz="0.0165148758343 -0.00635000173229 0.0107133342062" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341421317424 -0.0126999248924 0.0204921972789" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341421317424 -0.0126999248924 0.0204921972789" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:1--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="-0.0118750295302 0 -0.00635001620862" rpy="-1.57079618732 0 0.984578178631"/>
+    <axis xyz="2.01588156445e-08 -1.00000013811 -1.94323334646e-08"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="deltaquad_endrod_2:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:1">
+    <inertial>
+      <origin xyz="0 -0.0905627524942 2.02977739894e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.181124912389 -1.17623433132e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.181124912389 -1.17623433132e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:1--deltaquad_leg_3:1" type="continuous">
+    <origin xyz="0.0141421119847 -0.00634997217663 0.014142183245" rpy="-4.76999352411e-07 0.0342120609204 1.57079603559"/>
+    <axis xyz="2.29800565299e-07 -1.00000004816 -4.7829320407e-07"/>
+    <parent link="deltaquad_endrod_2:1"/>
+    <child link="deltaquad_leg_3:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:23">
+    <inertial>
+      <origin xyz="1.42679619966e-07 -0.00158735277312 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="2.48301433511e-07 -0.00317468352245 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:23_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="2.48301433511e-07 -0.00317468352245 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:23--deltaquad_leg_3:1" type="continuous">
+    <origin xyz="0 -0.181124912389 -1.17623433132e-07" rpy="-3.14158805107 -1.5177784545 -4.39708063249e-06"/>
+    <axis xyz="2.32428644067e-07 -1.00000004816 -4.32077024437e-08"/>
+    <parent link="deltaquad_leg_3:1"/>
+    <child link="10-24_nut:23"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:4">
+    <inertial>
+      <origin xyz="-0.00409251148431 0 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0031750135939 -0.0063500070712 0.00952498217921" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:4_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0031750135939 -0.0063500070712 0.00952498217921" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:4--10-24_nut:23" type="continuous">
+    <origin xyz="2.48301433511e-07 -0.00317468352245 0" rpy="3.0210982317 2.83839729186e-07 -1.57079668523"/>
+    <axis xyz="1.00000004816 -5.57650346691e-07 -3.09910376833e-07"/>
+    <parent link="10-24_nut:23"/>
+    <child link="deltaquad_hinge_link4:4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:22">
+    <inertial>
+      <origin xyz="0 0.00158733074934 -1.08673873706e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:22_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:22--deltaquad_hinge_link4:4" type="continuous">
+    <origin xyz="0.0031754828682 3.45315702283e-07 1.20456225834e-07" rpy="-1.89950862318e-06 -1.32866544609 -1.57079485728"/>
+    <axis xyz="1.85187410184e-07 1.00000004816 -1.4283132381e-07"/>
+    <parent link="deltaquad_hinge_link4:4"/>
+    <child link="10-24_nut:22"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:24">
+    <inertial>
+      <origin xyz="0 0.00158739485184 -1.77523693079e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:24_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:24--10-24_nut:22" type="continuous">
+    <origin xyz="0 0.00317466149869 -2.17347747439e-07" rpy="0 0 0"/>
+    <axis xyz="1.85187410184e-07 1.00000004816 -1.4283132381e-07"/>
+    <parent link="10-24_nut:22"/>
+    <child link="10-24_nut:24"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:6">
+    <inertial>
+      <origin xyz="0 0.0126999480285 0" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:6_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:6--deltaquad_hinge_link4:4" type="continuous">
+    <origin xyz="-0.0118748900574 0 -0.0125249858979" rpy="1.57079619769 -4.42316236138e-07 1.74477957736"/>
+    <axis xyz="-4.27032931294e-07 -0.999999923485 -2.39727529078e-08"/>
+    <parent link="deltaquad_hinge_link4:4"/>
+    <child link="10-24_1_threaded_rod:6"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:36">
+    <inertial>
+      <origin xyz="1.98743219715e-07 0.00158751085763 4.55415180067e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:36_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:36--deltaquad_hinge_link4:4" type="continuous">
+    <origin xyz="-0.0118750273231 0 -0.00952497758109" rpy="-1.57079602179 1.31674726317e-07 -0.451637886937"/>
+    <axis xyz="2.07945157538e-07 0.999999923485 -2.31051221655e-07"/>
+    <parent link="deltaquad_hinge_link4:4"/>
+    <child link="10-24_nut:36"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:35">
+    <inertial>
+      <origin xyz="-2.70059844654e-07 -0.00158755235115 -4.35247219294e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00317497808622 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:35_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00317497808622 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:35--deltaquad_hinge_link4:4" type="continuous">
+    <origin xyz="-0.0118749185894 0 0.00952501174243" rpy="-1.57079663055 -2.06700823902e-07 2.80214452711"/>
+    <axis xyz="2.90771281497e-07 -0.999999923485 -2.3880220712e-07"/>
+    <parent link="deltaquad_hinge_link4:4"/>
+    <child link="10-24_nut:35"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:16">
+    <inertial>
+      <origin xyz="0 0.00158746342798 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:16_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:16--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="-0.0118750563608 0 0.00952502459538" rpy="1.5707961467 -3.52783238011e-07 -0.605337809237"/>
+    <axis xyz="5.11709826567e-07 1.00000013811 1.79520291216e-07"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="10-24_nut:16"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:17">
+    <inertial>
+      <origin xyz="0 0.00158754363778 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:17_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:17--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="-0.0118750016038 0 -0.00952500008007" rpy="-1.57079617413 1.66929214007e-07 1.18693629591"/>
+    <axis xyz="2.01280020137e-07 1.00000013811 2.50195714147e-09"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="10-24_nut:17"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:1">
+    <inertial>
+      <origin xyz="0 0.0126999687195 0" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:1--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="-0.0118749948092 0 0.0125249500564" rpy="-1.57079630957 0 -2.56401492179"/>
+    <axis xyz="-1.01164528643e-07 -1.00000013811 1.64126021884e-07"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="10-24_1_threaded_rod:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_RS_1270:2">
+    <inertial>
+      <origin xyz="-0.0100749999999 0.0203261 -0.020092" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:2--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="0.0617191999999 0.0276782000005 -0.135638" rpy="-3.14159265359 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:3">
+    <inertial>
+      <origin xyz="1.46098088387e-07 -0.0255101955984 -0.02115" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.011999980746 -0.0449999399455 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:3_color">
+        <color rgba="0.301961 0.301961 0.301961 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011999980746 -0.0449999399455 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:3--RoBoard_RS_1270:2" type="continuous">
+    <origin xyz="-0.010075 0 -0.01" rpy="-1.57079632679 0.282214422587 -3.14159265359"/>
+    <axis xyz="4.31351721413e-14 -1.14217235857e-13 1.0"/>
+    <parent link="RoBoard_RS_1270:2"/>
+    <child link="servo_C_bracket_long:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:6">
+    <inertial>
+      <origin xyz="0 0.00158680181139 1.06648685872e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:6_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:6--servo_C_bracket_long:3" type="continuous">
+    <origin xyz="0 -0.0450001601246 -0.0211500000001" rpy="0.118448905781 -1.57079632679 3.02309826584"/>
+    <axis xyz="4.77222705374e-15 0.999999847885 -1.14274104568e-07"/>
+    <parent link="servo_C_bracket_long:3"/>
+    <child link="10-24_nut:6"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:9">
+    <inertial>
+      <origin xyz="0 0.00158779010082 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:9_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:9--10-24_nut:6" type="continuous">
+    <origin xyz="0 0.00317459191221 0" rpy="0 0 0"/>
+    <axis xyz="4.77222705374e-15 0.999999847885 -1.14274104568e-07"/>
+    <parent link="10-24_nut:6"/>
+    <child link="10-24_nut:9"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:3">
+    <inertial>
+      <origin xyz="0 -0.00158682965973 1.83183909968e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00317461976054 1.14386280749e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:3_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00317461976054 1.14386280749e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:3--servo_C_bracket_long:3" type="continuous">
+    <origin xyz="1.53580225918e-07 -0.0439996186559 -0.0211500000001" rpy="-1.60641528822e-07 1.13099289255 3.14159262907"/>
+    <axis xyz="-3.82134258681e-08 -0.999999847885 -2.41853457844e-07"/>
+    <parent link="servo_C_bracket_long:3"/>
+    <child link="10-24_nut:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:2">
+    <inertial>
+      <origin xyz="0 0.0265627692802 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:3--deltaquad_armlink_2:2" type="continuous">
+    <origin xyz="0 -0.00317461976054 1.14386280749e-07" rpy="5.84846967325e-07 -0.986950864896 -1.44397255758e-07"/>
+    <axis xyz="1.43257820051e-07 0.999999847885 -3.62934072837e-07"/>
+    <parent link="10-24_nut:3"/>
+    <child link="deltaquad_armlink_2:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:12">
+    <inertial>
+      <origin xyz="0 0.00158682965973 -1.83183909971e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:12_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:12--deltaquad_armlink_2:2" type="continuous">
+    <origin xyz="-1.01469427812e-07 0.0531245781193 0" rpy="3.14159181118 0.986950864896 -6.23270209504e-07"/>
+    <axis xyz="-3.8213429629e-08 0.999999847885 2.41853456234e-07"/>
+    <parent link="deltaquad_armlink_2:2"/>
+    <child link="10-24_nut:12"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:2">
+    <inertial>
+      <origin xyz="-0.00409290911699 0 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317480468832 -0.00635007791336 0.0095250064239" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:2_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317480468832 -0.00635007791336 0.0095250064239" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:2--10-24_nut:12" type="continuous">
+    <origin xyz="0 0.00317461976054 -1.14386280739e-07" rpy="1.0219488919 -3.53722380553e-07 1.57079641345"/>
+    <axis xyz="0.999999847885 -1.20709077955e-07 -1.70379456862e-08"/>
+    <parent link="10-24_nut:12"/>
+    <child link="deltaquad_hinge_link4:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:3">
+    <inertial>
+      <origin xyz="0.0165151595224 0.00634999485358 0.010713191369" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341425425888 0 0.0204915052659" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341425425888 0 0.0204915052659" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:3--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="-0.0118751990793 0 0.00635000831517" rpy="-1.57079612752 0 1.03427938715"/>
+    <axis xyz="6.23160518465e-08 1.00000041266 -2.63601396468e-07"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="deltaquad_endrod_2:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:2">
+    <inertial>
+      <origin xyz="3.53621621763e-07 0.0905628053253 7.31916803498e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:3--deltaquad_leg_3:2" type="continuous">
+    <origin xyz="0.0141421208795 0.00635001995883 0.0141421566938" rpy="-3.14159227589 0.453388131339 1.57079612331"/>
+    <axis xyz="2.08909804733e-08 0.999999689218 2.17252741352e-08"/>
+    <parent link="deltaquad_endrod_2:3"/>
+    <child link="deltaquad_leg_3:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:26">
+    <inertial>
+      <origin xyz="0 0.00158764926447 -2.36500096923e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:26_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:26--deltaquad_leg_3:2" type="continuous">
+    <origin xyz="1.10063062102e-07 0.181125215085 1.12203657587e-07" rpy="3.14159243332 0.179495691682 3.72984435036e-07"/>
+    <axis xyz="-3.83668554579e-07 0.999999689218 3.11965612565e-07"/>
+    <parent link="deltaquad_leg_3:2"/>
+    <child link="10-24_nut:26"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:5">
+    <inertial>
+      <origin xyz="-0.00409204752366 5.5368095836e-07 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317556976074 -0.00634934246248 0.00952496195839" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:5_color">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317556976074 -0.00634934246248 0.00952496195839" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:5--10-24_nut:26" type="continuous">
+    <origin xyz="-1.44449585529e-07 0.0031746931692 2.65649622216e-07" rpy="-1.82113881509 -1.81248671238e-07 1.57079684481"/>
+    <axis xyz="0.999999689218 -9.33602897213e-08 -1.62539977682e-07"/>
+    <parent link="10-24_nut:26"/>
+    <child link="deltaquad_hinge_link4:5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:32">
+    <inertial>
+      <origin xyz="0 0.00158743676877 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:32_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:32--deltaquad_hinge_link4:5" type="continuous">
+    <origin xyz="-0.011874505726 5.09053134562e-07 -0.00952511140689" rpy="-1.57079627266 5.9080157272e-07 0.619434044845"/>
+    <axis xyz="1.11610735543e-07 0.999999850227 -1.11657108129e-07"/>
+    <parent link="deltaquad_hinge_link4:5"/>
+    <child link="10-24_nut:32"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:4">
+    <inertial>
+      <origin xyz="5.79739294376e-07 0.0126998939782 0" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:4_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:4--deltaquad_hinge_link4:5" type="continuous">
+    <origin xyz="-0.0118746484038 3.12101587574e-07 0.0125249421795" rpy="-1.57079611321 0 -2.52325522041"/>
+    <axis xyz="-4.66072175082e-07 -0.999999850226 1.55531774806e-07"/>
+    <parent link="deltaquad_hinge_link4:5"/>
+    <child link="10-24_1_threaded_rod:4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:31">
+    <inertial>
+      <origin xyz="0 0.00158743676876 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:31_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:31--deltaquad_hinge_link4:5" type="continuous">
+    <origin xyz="-0.011874609172 4.63998610228e-07 0.00952495184858" rpy="1.5707960361 -5.34213152908e-07 -2.64801494014"/>
+    <axis xyz="6.60332088237e-08 0.999999850227 4.07918095101e-07"/>
+    <parent link="deltaquad_hinge_link4:5"/>
+    <child link="10-24_nut:31"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:25">
+    <inertial>
+      <origin xyz="1.20217873698e-07 0.00158772215028 -1.38015795625e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:25_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:25--deltaquad_hinge_link4:5" type="continuous">
+    <origin xyz="0.00317537141458 4.32511884363e-07 0" rpy="-3.14159229586 0.990490656049 1.57079706377"/>
+    <axis xyz="-3.19326270537e-07 0.999999689218 4.25795150527e-07"/>
+    <parent link="deltaquad_hinge_link4:5"/>
+    <child link="10-24_nut:25"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:27">
+    <inertial>
+      <origin xyz="1.56561750883e-07 0.0015876492645 -1.9603979709e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:27_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:27--10-24_nut:25" type="continuous">
+    <origin xyz="-2.5861422423e-07 0.00317476605497 2.63349565294e-07" rpy="0 0 0"/>
+    <axis xyz="-3.19326270537e-07 0.999999689218 4.25795150527e-07"/>
+    <parent link="10-24_nut:25"/>
+    <child link="10-24_nut:27"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:13">
+    <inertial>
+      <origin xyz="0 0.00158776225251 1.56423491285e-07" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:13_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:13--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="0.00317461976049 -1.26892544318e-07 0" rpy="0 -1.03581128097 -1.57079655213"/>
+    <axis xyz="-6.80000259157e-08 0.999999847885 6.77742618693e-08"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="10-24_nut:13"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:19">
+    <inertial>
+      <origin xyz="0 0.0015874226902 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:19_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:19--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="-0.0118750846289 0 -0.00952507549925" rpy="-1.57079624375 -3.76546468284e-07 -2.00650748862"/>
+    <axis xyz="-3.876483953e-07 1.00000041266 -1.72714183927e-08"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="10-24_nut:19"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_threaded_rod:2">
+    <inertial>
+      <origin xyz="3.70598134306e-07 0.0127000093152 -8.16660992081e-07" rpy="0 0 0"/>
+      <mass value="0.000452569"/>
+      <inertia ixx="2.49733e-08" ixy="0.0" ixz="0.0" iyy="1.28338e-09" iyz="0.0" izz="2.49733e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+      <material name="10-24_1_threaded_rod:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_1_threaded_rod_ipt_5c7c1f0b.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_threaded_rod:2--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="-0.0118753572836 0 0.0125249873527" rpy="-1.57079613784 -6.4527690935e-07 1.3542956689"/>
+    <axis xyz="6.48744428082e-07 -1.00000041266 2.55569142692e-07"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="10-24_1_threaded_rod:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_nut:21">
+    <inertial>
+      <origin xyz="1.12236234806e-07 0.00158752209634 0" rpy="0 0 0"/>
+      <mass value="0.000864269"/>
+      <inertia ixx="5.60372e-09" ixy="0.0" ixz="0.0" iyy="9.75539e-09" iyz="0.0" izz="5.60372e-09"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+      <material name="10-24_nut:21_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_import_3\10-24_nut_ipt_1a928094.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_nut:21--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="-0.0118744647558 1.92856390142e-07 0.00952499386073" rpy="1.57079621008 4.36561105821e-07 -2.29910341533"/>
+    <axis xyz="-4.06959322314e-07 1.00000041266 1.76494969285e-07"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="10-24_nut:21"/>
+    <dynamics damping="0.1"/>
+  </joint>
+</robot>

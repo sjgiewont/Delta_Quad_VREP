@@ -1,0 +1,679 @@
+<robot
+  name="DeltaQuad_1_URDF">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0511686318191123 -0.118437507485991 0.0728414674643777"
+        rpy="0 0 0" />
+      <mass
+        value="0.173357103245984" />
+      <inertia
+        ixx="0.00015693061480673"
+        ixy="-1.85059186237521E-09"
+        ixz="-2.33647996063514E-10"
+        iyy="0.000156933388825689"
+        iyz="-1.16411723114179E-10"
+        izz="0.000293530260168281" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/base_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/base_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="servo_1_link">
+    <inertial>
+      <origin
+        xyz="-0.012 0.00981030744934139 -0.02115"
+        rpy="0 0 0" />
+      <mass
+        value="0.00452317565752405" />
+      <inertia
+        ixx="4.26260287533396E-06"
+        ixy="2.11758236813575E-22"
+        ixz="-3.71617628456852E-22"
+        iyy="1.52090307254509E-06"
+        iyz="-2.64155910227473E-21"
+        izz="3.08160430594073E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_1_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo_1_joint"
+    type="fixed">
+    <origin
+      xyz="0.0713178313140264 -0.0272137420053734 0.100998359174957"
+      rpy="-1.5707963267949 -1.24624662518683 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="servo_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="top_knee_1_link">
+    <inertial>
+      <origin
+        xyz="-0.00726763791118091 0.00634999999999998 -0.00952499999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.00187866964117564" />
+      <inertia
+        ixx="1.24953333408074E-07"
+        ixy="2.31610571514848E-23"
+        ixz="2.66765747548351E-23"
+        iyy="1.60017429130725E-07"
+        iyz="3.57109380075627E-23"
+        izz="8.96467764918368E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_1_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="top_knee_1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00572210277480795 -0.0489500000000002 -0.0115773237059885"
+      rpy="-0.00755091154667934 4.77048955893622E-18 1.5707963267949" />
+    <parent
+      link="servo_1_link" />
+    <child
+      link="top_knee_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bottom_knee_1_link">
+    <inertial>
+      <origin
+        xyz="0.0800201355697156 0.00635000000000002 -0.00748639485777472"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148740294164864" />
+      <inertia
+        ixx="6.29376638057558E-07"
+        ixy="-6.76460033139741E-20"
+        ixz="-1.85197014586656E-06"
+        iyy="9.7168033386975E-05"
+        iyz="-8.94145091917082E-10"
+        izz="9.72056668777335E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_1_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bottom_knee_1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0149504597955768 -0.0334696325839195 -0.015875"
+      rpy="1.5707963267949 6.86950496486816E-16 -1.0277294527955" />
+    <parent
+      link="top_knee_1_link" />
+    <child
+      link="bottom_knee_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leg_foot_1_link">
+    <inertial>
+      <origin
+        xyz="-1.66306963325646E-07 -0.0115769188907398 -2.30968855152724E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.0346611112899811" />
+      <inertia
+        ixx="1.8036175563863E-05"
+        ixy="8.21120848292078E-11"
+        ixz="-8.36244963584502E-15"
+        iyy="1.45944439556561E-05"
+        iyz="1.50840337828279E-14"
+        izz="1.80361649320368E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_1_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_1_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leg_foot_1_joint"
+    type="fixed">
+    <origin
+      xyz="0.210272710889614 0.00643669757123586 -0.0222071349613647"
+      rpy="-1.57928373476621 -0.87084828318987 -3.13510077715176" />
+    <parent
+      link="bottom_knee_1_link" />
+    <child
+      link="leg_foot_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servo_2_link">
+    <inertial>
+      <origin
+        xyz="-0.012 0.00981030744934158 -0.0211500000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.00452317565752408" />
+      <inertia
+        ixx="4.26260287533398E-06"
+        ixy="-2.29294465799699E-21"
+        ixz="3.27563522570999E-22"
+        iyy="1.5209030725451E-06"
+        iyz="1.32348898008484E-21"
+        izz="3.08160430594075E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_2_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0217896606809096 -0.186136550893809 0.0619728003271935"
+      rpy="1.57079632679488 1.54173889869814 0.523598775598287" />
+    <parent
+      link="base_link" />
+    <child
+      link="servo_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="top_knee_2_link">
+    <inertial>
+      <origin
+        xyz="-0.0072676379111809 0.00635000000000001 -0.00952500000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.00187866964117565" />
+      <inertia
+        ixx="1.24953333408075E-07"
+        ixy="4.38405724653105E-23"
+        ixz="-5.29395592033938E-23"
+        iyy="1.60017429130726E-07"
+        iyz="3.72231275648862E-23"
+        izz="8.96467764918372E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_2_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="top_knee_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0196267539749259 -0.0489500000000002 -0.0296870222446672"
+      rpy="-3.00045299611551 1.66533453693773E-16 1.5707963267949" />
+    <parent
+      link="servo_2_link" />
+    <child
+      link="top_knee_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bottom_knee_2_link">
+    <inertial>
+      <origin
+        xyz="0.0800983107197299 0.0063500000000002 -0.00748639485777469"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148740294164864" />
+      <inertia
+        ixx="6.29376638057552E-07"
+        ixy="-1.8062977600198E-19"
+        ixz="-1.85329152248936E-06"
+        iyy="9.73471456022473E-05"
+        iyz="-1.52086489013781E-09"
+        izz="9.73847605818253E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_2_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bottom_knee_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0101952863238088 -0.0331727124890583 -0.0158750000000001"
+      rpy="1.5707963267949 3.88578058618805E-16 -0.908007950807067" />
+    <parent
+      link="top_knee_2_link" />
+    <child
+      link="bottom_knee_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leg_foot_2_link">
+    <inertial>
+      <origin
+        xyz="-1.66306963297891E-07 -0.0115769188907398 -2.30968855152724E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.0346611112899812" />
+      <inertia
+        ixx="1.8036175563863E-05"
+        ixy="8.21120848321724E-11"
+        ixz="-8.36244939761701E-15"
+        iyy="1.45944439556561E-05"
+        iyz="1.5084033618219E-14"
+        izz="1.80361649320368E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_2_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_2_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leg_foot_2_joint"
+    type="fixed">
+    <origin
+      xyz="0.210670473203329 0.00649290681108972 -0.021716094607825"
+      rpy="-0.782336895667313 0.378728143478849 1.21057148111489" />
+    <parent
+      link="bottom_knee_2_link" />
+    <child
+      link="leg_foot_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="servo_3_link">
+    <inertial>
+      <origin
+        xyz="-0.0119999999999999 0.00981030744934142 -0.0211500000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.00452317565752406" />
+      <inertia
+        ixx="4.26260287533396E-06"
+        ixy="-9.71937219749808E-22"
+        ixz="-2.64036051526926E-21"
+        iyy="1.52090307254509E-06"
+        iyz="-3.70576914423756E-21"
+        izz="3.08160430594073E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_3_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/servo_3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo_3_joint"
+    type="fixed">
+    <origin
+      xyz="0.125787680209258 -0.184786912020926 0.0856720266167925"
+      rpy="1.57079632679489 -1.5353319424604 -0.523598775598296" />
+    <parent
+      link="base_link" />
+    <child
+      link="servo_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="top_knee_3_link">
+    <inertial>
+      <origin
+        xyz="-0.00726763791117946 0.00634999999999998 -0.00952500000000003"
+        rpy="0 0 0" />
+      <mass
+        value="0.00187866964117565" />
+      <inertia
+        ixx="1.24953333408075E-07"
+        ixy="-6.20385459414771E-23"
+        ixz="-3.30872245021211E-24"
+        iyy="1.60017429130726E-07"
+        iyz="6.45200877791362E-23"
+        izz="8.96467764918371E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_3_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/top_knee_3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="top_knee_3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0168862153220891 -0.048949999999729 -0.0315024405251213"
+      rpy="2.99457701997277 -6.10622663543836E-16 1.5707963267949" />
+    <parent
+      link="servo_3_link" />
+    <child
+      link="top_knee_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bottom_knee_3_link">
+    <inertial>
+      <origin
+        xyz="0.0800983107196576 0.00635000000000656 -0.00748639485777475"
+        rpy="0 0 0" />
+      <mass
+        value="0.0148740294164864" />
+      <inertia
+        ixx="6.2937663805756E-07"
+        ixy="4.37280759020033E-20"
+        ixz="-1.85329152248811E-06"
+        iyy="9.73471368101362E-05"
+        iyz="-9.35584154135197E-10"
+        izz="9.73847693736055E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_3_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/bottom_knee_3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bottom_knee_3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0101762253881947 0.0458703665014157 -0.00317499996604022"
+      rpy="-1.5707963267949 -1.38777878078145E-16 0.907525658480481" />
+    <parent
+      link="top_knee_3_link" />
+    <child
+      link="bottom_knee_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leg_foot_3_link">
+    <inertial>
+      <origin
+        xyz="-1.66306963297891E-07 -0.0115769188907398 -2.30968855152724E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.0346611112899812" />
+      <inertia
+        ixx="1.8036175563863E-05"
+        ixy="8.21120848321724E-11"
+        ixz="-8.36244939761701E-15"
+        iyy="1.45944439556561E-05"
+        iyz="1.5084033618219E-14"
+        izz="1.80361649320368E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_3_link.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DeltaQuad_1_URDF/meshes/leg_foot_3_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leg_foot_3_joint"
+    type="fixed">
+    <origin
+      xyz="0.210685092991703 0.0064377210744387 -0.0216836474486151"
+      rpy="-2.35256117029889 0.392441249640591 -1.2080518685308" />
+    <parent
+      link="bottom_knee_3_link" />
+    <child
+      link="leg_foot_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

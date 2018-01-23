@@ -1,0 +1,717 @@
+<robot name="DeltaQuad_12_simple">
+  <link name="RoBoard_RS_1270_mount_5:1">
+    <inertial>
+      <origin xyz="-0.0135374999999 -0.0155493000001 0.00650784999997" rpy="0 0 0"/>
+      <mass value="0.0752694"/>
+      <inertia ixx="5.11267e-05" ixy="-6.73759e-10" ixz="1.85052e-09" iyy="9.11146e-05" iyz="3.35691e-10" izz="5.11294e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00611068000009 -0.0250191999999 -0.0154912" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\roboard_rs_1270_mount_5_ipt_42ec5df0.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270_mount_5:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00611068000009 -0.0250191999999 -0.0154912" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\roboard_rs_1270_mount_5_ipt_42ec5df0.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="RoBoard_RS_1270:3">
+    <inertial>
+      <origin xyz="-0.0100750200001 0.0203260888842 -0.0200921964073" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:3--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="-0.0776542999999 -0.0200192000003 0.0202584" rpy="1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:3">
+    <inertial>
+      <origin xyz="0 -0.0255105774713 0.0211500201027" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0120000762133 -0.0449999465831 0.0423000117686" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0120000762133 -0.0449999465831 0.0423000117686" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:3--RoBoard_RS_1270:3" type="continuous">
+    <origin xyz="-0.01007502 0 -0.00999995320182" rpy="-1.57079556674 0.819675915246 5.95435906957e-07"/>
+    <axis xyz="-2.58791891083e-07 -1.87051215628e-07 -0.999999650312"/>
+    <parent link="RoBoard_RS_1270:3"/>
+    <child link="servo_C_bracket_long:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:1">
+    <inertial>
+      <origin xyz="0 0.0265623153287 -2.61290926819e-07" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_armlink_2:1--servo_C_bracket_long:3" type="continuous">
+    <origin xyz="0 -0.0439999900487 0.0211500118886" rpy="3.14159232199 1.10146363986 0"/>
+    <axis xyz="-1.07361372514e-07 -1.00000015937 -4.96392956462e-08"/>
+    <parent link="servo_C_bracket_long:3"/>
+    <child link="deltaquad_armlink_2:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:1">
+    <inertial>
+      <origin xyz="-0.00409270658525 0 1.18905549256e-07" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317465742095 -0.00635016539558 0.00952539715016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:1_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317465742095 -0.00635016539558 0.00952539715016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\VREP_Import\deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:1--deltaquad_armlink_2:1" type="continuous">
+    <origin xyz="-1.0389382683e-07 0.05312467577 -3.03575638384e-07" rpy="-0.779267015229 1.923570222e-07 -1.57079628163"/>
+    <axis xyz="1.00000015937 -2.08805233853e-07 -5.65315957934e-09"/>
+    <parent link="deltaquad_armlink_2:1"/>
+    <child link="deltaquad_hinge_link4:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:1">
+    <inertial>
+      <origin xyz="0.016514853147 -0.00635008812495 0.0107132496274" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341419993217 -0.0126997737339 0.020492400401" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341419993217 -0.0126997737339 0.020492400401" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:1--deltaquad_hinge_link4:1" type="continuous">
+    <origin xyz="-0.0118750756545 0 0.00635014392043" rpy="1.57079627141 0 -0.510705108983"/>
+    <axis xyz="-1.40471640213e-07 -1.00000035018 9.0955322718e-08"/>
+    <parent link="deltaquad_hinge_link4:1"/>
+    <child link="deltaquad_endrod_2:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:2">
+    <inertial>
+      <origin xyz="1.43889122534e-07 -0.0905625275479 -1.05739203685e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.181125030118 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.181125030118 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_leg_3:2--deltaquad_endrod_2:1" type="continuous">
+    <origin xyz="0.01414201221 -0.00634987617342 0.0141422880877" rpy="-3.14159137124 1.18034631084 -1.57079512321"/>
+    <axis xyz="-7.37080910196e-10 1.00000001055 1.89113931433e-08"/>
+    <parent link="deltaquad_endrod_2:1"/>
+    <child link="deltaquad_leg_3:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:4">
+    <inertial>
+      <origin xyz="-0.00409256071832 0 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317498877445 -0.00635000405522 0.00952509739167" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:4_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317498877445 -0.00635000405522 0.00952509739167" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:4--deltaquad_leg_3:2" type="continuous">
+    <origin xyz="0 -0.181125030118 0" rpy="2.963779663 0 1.5707964217"/>
+    <axis xyz="1.00000001055 7.99712507812e-08 8.74127176276e-08"/>
+    <parent link="deltaquad_leg_3:2"/>
+    <child link="deltaquad_hinge_link4:4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_platform_7:1">
+    <inertial>
+      <origin xyz="-0.0342064131244 -0.011731292354 -0.00634994182953" rpy="0 0 0"/>
+      <mass value="0.00650987"/>
+      <inertia ixx="2.25536e-06" ixy="-3.45809e-12" ixz="0.0" iyy="4.28248e-06" iyz="0.0" izz="2.25536e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0342062542855 -0.0159997427535 -0.00635005068156" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_platform_7_ipt_a55a889c.stl"/>
+      </geometry>
+      <material name="deltaquad_platform_7:1_color">
+        <color rgba="0.866667 0.486275 0.0588235 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0342062542855 -0.0159997427535 -0.00635005068156" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_platform_7_ipt_a55a889c.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:4--deltaquad_platform_7:1" type="continuous">
+    <origin xyz="-0.011875277834 0 0.0063500448697" rpy="-1.37290699571e-07 1.75810984881e-07 -0.951808148732"/>
+    <axis xyz="-1.091128769e-07 -1.7152895132e-07 1.00000009326"/>
+    <parent link="deltaquad_hinge_link4:4"/>
+    <child link="deltaquad_platform_7:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10-24_1_5_screw:1">
+    <inertial>
+      <origin xyz="0 -0.0148287784801 -1.40455056717e-07" rpy="0 0 0"/>
+      <mass value="0.00688475"/>
+      <inertia ixx="1.15347e-06" ixy="-1.80251e-17" ixz="0.0" iyy="3.17151e-08" iyz="0.0" izz="1.15347e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="10-24_1_5_screw_ipt_577d0c40.stl"/>
+      </geometry>
+      <material name="10-24_1_5_screw:1_color">
+        <color rgba="0.745098 0.737255 0.729412 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="10-24_1_5_screw_ipt_577d0c40.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10-24_1_5_screw:1--deltaquad_platform_7:1" type="continuous">
+    <origin xyz="-0.0342062590379 -0.01099966916 -0.00635003323651" rpy="-3.14159244334 -0.437628555386 -3.14159250115"/>
+    <axis xyz="2.30734940128e-07 -0.999999854358 9.62706736551e-09"/>
+    <parent link="deltaquad_platform_7:1"/>
+    <child link="10-24_1_5_screw:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_footpad:1">
+    <inertial>
+      <origin xyz="0 -0.00287351120389 0" rpy="0 0 0"/>
+      <mass value="0.0144736"/>
+      <inertia ixx="1.47529e-06" ixy="5.35274e-18" ixz="0.0" iyy="2.42153e-06" iyz="0.0" izz="1.47529e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.0100001250614 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_footpad_ipt_fc6a02b1.stl"/>
+      </geometry>
+      <material name="deltaquad_footpad:1_color">
+        <color rgba="0.25098 0.25098 0.25098 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.0100001250614 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_footpad_ipt_fc6a02b1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_footpad:1--10-24_1_5_screw:1" type="continuous">
+    <origin xyz="0 -0.0380998487486 -1.1569870044e-07" rpy="3.14159197223 1.38655362259 -3.27718433022e-07"/>
+    <axis xyz="9.28456941884e-08 0.999999854358 1.30592213349e-07"/>
+    <parent link="10-24_1_5_screw:1"/>
+    <child link="deltaquad_footpad:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_RS_1270:1">
+    <inertial>
+      <origin xyz="-0.0100750199999 0.02032618 -0.0200922" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:1--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="0.00661068000008 -0.0200191999999 -0.0558912" rpy="3.14159265359 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:2">
+    <inertial>
+      <origin xyz="0 -0.0255106659878 -0.02114998" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0119999672102 -0.0449999689114 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0119999672102 -0.0449999689114 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:2--RoBoard_RS_1270:1" type="continuous">
+    <origin xyz="-0.01007502 0 -0.01" rpy="-1.5707963268 0.420039644543 -3.14159265359"/>
+    <axis xyz="1.86519524551e-14 -1.189122294e-13 1.0"/>
+    <parent link="RoBoard_RS_1270:1"/>
+    <child link="servo_C_bracket_long:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:3">
+    <inertial>
+      <origin xyz="0 -0.0265626081795 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-1.62092334992e-07 -0.0531246562814 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.62092334992e-07 -0.0531246562814 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_armlink_2:3--servo_C_bracket_long:2" type="continuous">
+    <origin xyz="0 -0.0439999970266 -0.0211499800001" rpy="-3.14159262725 0.496044303172 -3.14159255548"/>
+    <axis xyz="1.12373057193e-07 1.00000034827 -8.7151792949e-08"/>
+    <parent link="servo_C_bracket_long:2"/>
+    <child link="deltaquad_armlink_2:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:3">
+    <inertial>
+      <origin xyz="-0.00409272478891 1.0904507727e-07 0" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317446776919 -0.00634971004531 0.00952492719265" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:3_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317446776919 -0.00634971004531 0.00952492719265" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:3--deltaquad_armlink_2:3" type="continuous">
+    <origin xyz="-1.62092334992e-07 -0.0531246562814 0" rpy="-2.4725143441 2.94807828705e-07 1.57079612122"/>
+    <axis xyz="1.00000034827 -2.01907772446e-07 -1.05074914825e-07"/>
+    <parent link="deltaquad_armlink_2:3"/>
+    <child link="deltaquad_hinge_link4:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:3">
+    <inertial>
+      <origin xyz="0.0165141712189 -0.0063500539863 0.0107136536969" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341421769075 -0.0126999470078 0.0204921218826" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341421769075 -0.0126999470078 0.0204921218826" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:3--deltaquad_hinge_link4:3" type="continuous">
+    <origin xyz="-0.0118750758957 0 0.00634996280533" rpy="1.57079609639 -1.07820936401e-07 -0.863752674688"/>
+    <axis xyz="1.20873069692e-07 -0.999999995517 1.57144482937e-07"/>
+    <parent link="deltaquad_hinge_link4:3"/>
+    <child link="deltaquad_endrod_2:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:3">
+    <inertial>
+      <origin xyz="0 0.0905624218603 0" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:3_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_leg_3:3--deltaquad_endrod_2:3" type="continuous">
+    <origin xyz="0.0141419040989 -0.00635002666356 0.0141422385188" rpy="3.10818620099e-06 1.35500189755 -1.57079372682"/>
+    <axis xyz="-5.62136916848e-07 -0.999999833098 1.13818377195e-07"/>
+    <parent link="deltaquad_endrod_2:3"/>
+    <child link="deltaquad_leg_3:3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:6">
+    <inertial>
+      <origin xyz="-0.00409285597951 4.04847731089e-07 1.30814636451e-07" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317474394772 -0.00634953957364 0.00952513074919" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:6_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317474394772 -0.00634953957364 0.00952513074919" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:6--deltaquad_leg_3:3" type="continuous">
+    <origin xyz="1.71028513532e-07 0.181124849788 0" rpy="2.85455452631 -4.09261119272e-07 -1.57079736091"/>
+    <axis xyz="0.999999833098 -5.36312089461e-07 1.49731905666e-07"/>
+    <parent link="deltaquad_leg_3:3"/>
+    <child link="deltaquad_hinge_link4:6"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_RS_1270:2">
+    <inertial>
+      <origin xyz="-0.01007502 0.0203261648788 -0.0200922438622" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+      <material name="RoBoard_RS_1270:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="roboard_rs_1270_ipt_a65befb9.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_RS_1270:2--RoBoard_RS_1270_mount_5:1" type="fixed">
+    <origin xyz="0.0304257000001 -0.0200192 0.0551592" rpy="-1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_RS_1270_mount_5:1"/>
+    <child link="RoBoard_RS_1270:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket_long:1">
+    <inertial>
+      <origin xyz="0 -0.0255106115671 0.0211500391868" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0120000375619 -0.0449999812069 0.042300073688" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket_long:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0120000375619 -0.0449999812069 0.042300073688" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="servo_c_bracket_long_ipt_b8732dd4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket_long:1--RoBoard_RS_1270:2" type="continuous">
+    <origin xyz="-0.01007502 0 -0.0100000398044" rpy="-1.57079653511 0.199994428862 0"/>
+    <axis xyz="1.25608113771e-08 -2.31830776798e-10 -0.999999650312"/>
+    <parent link="RoBoard_RS_1270:2"/>
+    <child link="servo_C_bracket_long:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_armlink_2:2">
+    <inertial>
+      <origin xyz="0 0.0265625517721 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+      <material name="deltaquad_armlink_2:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_armlink_2_ipt_bc4a58da.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_armlink_2:2--servo_C_bracket_long:1" type="continuous">
+    <origin xyz="0 -0.0439999769972 0.0211500562811" rpy="-1.80994044553e-07 -0.770209600899 -3.14159216964"/>
+    <axis xyz="-6.88744555277e-08 -0.99999966811 1.56963497588e-07"/>
+    <parent link="servo_C_bracket_long:1"/>
+    <child link="deltaquad_armlink_2:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:2">
+    <inertial>
+      <origin xyz="-0.0040920521424 0 -3.51886732839e-07" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317579965362 -0.00634999569935 0.00952455337894" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:2_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317579965362 -0.00634999569935 0.00952455337894" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:2--deltaquad_armlink_2:2" type="continuous">
+    <origin xyz="2.17587574264e-07 0.0531253940462 0" rpy="-1.25551180447 1.47558924191e-07 -1.5707966115"/>
+    <axis xyz="0.99999966811 -2.22584560672e-07 2.99623697075e-07"/>
+    <parent link="deltaquad_armlink_2:2"/>
+    <child link="deltaquad_hinge_link4:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_endrod_2:2">
+    <inertial>
+      <origin xyz="0.0165153391907 -0.00634963952887 0.0107129843628" rpy="0 0 0"/>
+      <mass value="0.00492277"/>
+      <inertia ixx="2.28191e-07" ixy="0.0" ixz="-2.01497e-07" iyy="6.86614e-07" iyz="0.0" izz="5.99346e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341421876404 -0.0126999320411 0.0204920353375" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+      <material name="deltaquad_endrod_2:2_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341421876404 -0.0126999320411 0.0204920353375" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_endrod_2_ipt_3f1a7af7.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_endrod_2:2--deltaquad_hinge_link4:2" type="continuous">
+    <origin xyz="-0.0118749596152 0 -0.00635001422188" rpy="-1.57079650105 0 0.708825819552"/>
+    <axis xyz="4.07191858419e-07 -1.00000001173 -2.53913672255e-07"/>
+    <parent link="deltaquad_hinge_link4:2"/>
+    <child link="deltaquad_endrod_2:2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_leg_3:1">
+    <inertial>
+      <origin xyz="0 0.0905627060368 1.48397255432e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+      <material name="deltaquad_leg_3:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_leg_3_ipt_c20e57b4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_leg_3:1--deltaquad_endrod_2:2" type="continuous">
+    <origin xyz="0.0141421472167 -0.00634994577179 0.0141420098528" rpy="3.1415904982 -1.40836279752 1.57079863574"/>
+    <axis xyz="-2.20395103487e-08 -0.999999913191 5.26747790695e-07"/>
+    <parent link="deltaquad_endrod_2:2"/>
+    <child link="deltaquad_leg_3:1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_hinge_link4:5">
+    <inertial>
+      <origin xyz="-0.00409284695623 -1.37848088513e-07 1.54570849273e-07" rpy="0 0 0"/>
+      <mass value="0.00507241"/>
+      <inertia ixx="3.37374e-07" ixy="0.0" ixz="-4.32632e-19" iyy="4.32047e-07" iyz="0.0" izz="2.42046e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317490242377 -0.00635004915341 0.00952508379622" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+      <material name="deltaquad_hinge_link4:5_color">
+        <color rgba="0.996078 0.996078 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317490242377 -0.00635004915341 0.00952508379622" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="deltaquad_hinge_link4_ipt_6dc3009e.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaquad_hinge_link4:5--deltaquad_leg_3:1" type="continuous">
+    <origin xyz="0 0.181125223862 1.36132597028e-07" rpy="2.85455450324 -3.60366906399e-07 -1.5707961577"/>
+    <axis xyz="0.999999913191 2.3041538301e-07 -1.05462185949e-07"/>
+    <parent link="deltaquad_leg_3:1"/>
+    <child link="deltaquad_hinge_link4:5"/>
+    <dynamics damping="0.1"/>
+  </joint>
+</robot>

@@ -34,9 +34,9 @@ def main():
     # time.sleep(2)
     print "Ready to send commands to Python3 Script"
 
-    print "Starting Blynk Connection"
-    blynk_control_thread = Thread(target=blynk_controller, args=())
-    blynk_control_thread.start()
+    # print "Starting Blynk Connection"
+    # blynk_control_thread = Thread(target=blynk_controller, args=())
+    # blynk_control_thread.start()
 
     time.sleep(2)
 
@@ -50,11 +50,11 @@ def main():
     ## for control of Delta Quad through BBB
     # HOST2 = '129.21.90.114'
     # HOST2 = '129.21.88.72'
-    HOST2 = '192.168.7.2'
-    PORT2 = 12345
-    global bbb_socket
-    bbb_socket = socket.socket()
-    bbb_socket.connect((HOST2, PORT2))
+    # HOST2 = '192.168.7.2'
+    # PORT2 = 12345
+    # global bbb_socket
+    # bbb_socket = socket.socket()
+    # bbb_socket.connect((HOST2, PORT2))
 
     time.sleep(1)
 
@@ -72,37 +72,47 @@ def main():
 
     # for small steps
     step_angle = 90
-    step_length = 40
-    step_height = 100
+    step_length = 60
+    step_height = 125
     step_precision = 150
-    num_steps = 1
+    num_steps = 8
 
     curr_pos = [[0, 0, -250], [0, 0, -250], [0, 0, -250], [0, 0, -250]]
 
     while True:
         # jump(-150, -270, 3)
-        while blynk_power == 0:
-            try:
-                curr_pos = startPos()
-            except:
-                curr_pos = startPos()
-        while blynk_power == 1:
-            #urr_pos = walk_dir(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+        hop(-100, -300)
+        # curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+        # curr_pos = homePos(curr_pos, 0.5)
+        # time.sleep(3)
+        # curr_pos = walk_small(curr_pos, step_length, step_height, 0, num_steps, step_precision)
 
-            while blynk_radius < 500:
-                # print "NOT MOVING"
-                curr_pos = homePos(curr_pos, 0.5)
 
-            curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
-
-            # if blynk_radius > 500:
-            #     if blynk_angle < step_angle - 10 or blynk_angle > step_angle + 10:
-            #         curr_pos = homePos(curr_pos, 0.5)
-
-            step_angle = blynk_angle
-
-        curr_pos = homePos(curr_pos, 0.001)
-        print "Stop Walking"
+# This Section is used to control with Blynk
+    # while True:
+    #     # jump(-150, -270, 3)
+    #     while blynk_power == 0:
+    #         try:
+    #             curr_pos = startPos()
+    #         except:
+    #             curr_pos = startPos()
+    #     while blynk_power == 1:
+    #         #urr_pos = walk_dir(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+    #
+    #         while blynk_radius < 500:
+    #             # print "NOT MOVING"
+    #             curr_pos = homePos(curr_pos, 0.5)
+    #
+    #         curr_pos = walk_small(curr_pos, step_length, step_height, step_angle, num_steps, step_precision)
+    #
+    #         # if blynk_radius > 500:
+    #         #     if blynk_angle < step_angle - 10 or blynk_angle > step_angle + 10:
+    #         #         curr_pos = homePos(curr_pos, 0.5)
+    #
+    #         step_angle = blynk_angle
+    #
+    #     curr_pos = homePos(curr_pos, 0.001)
+    #     print "Stop Walking"
 
 
 
@@ -323,6 +333,59 @@ def jump(high_pt, low_pt, precision):
         #     time.sleep(2)
 
 
+def hop(high_pt, low_pt):
+    precision = 4
+    # z_trajectory = np.linspace(high_pt, low_pt, precision)
+    z_trajectory = np.array([high_pt, low_pt, low_pt, high_pt])
+    x_trajectory = np.array([0, 0, 0, 0])
+    y_trajectory = np.array([0, 0, 0, 0])
+    y_trajectory_left = np.array([0, 0, 0, 0])
+
+    final_trajectory = []
+    final_trajectory_left = []
+
+    # create matrix of all positions along trajectory
+    for i in range(precision):
+        final_trajectory.append([x_trajectory[i], y_trajectory[i], z_trajectory[i]])
+
+        # create matrix of all positions along trajectory
+    for i in range(precision):
+        final_trajectory_left.append([x_trajectory[i], y_trajectory_left[i], z_trajectory[i]])
+
+    FL_leg_index = 0
+    FR_leg_index = 0
+    HL_leg_index = 0
+    HR_leg_index = 0
+    # leg_index = [FL_leg_index, FR_leg_index, HL_leg_index, HR_leg_index]
+    leg_index = 0
+
+    decrease_index = 0
+
+    print final_trajectory
+    print leg_index
+
+    while(True):
+        # print final_trajectory[leg_index[1]]
+        leg1 = inverseKinematics(final_trajectory[leg_index])
+        leg2 = inverseKinematics(final_trajectory[leg_index])
+        leg3 = inverseKinematics(final_trajectory_left[leg_index])
+        leg4 = inverseKinematics(final_trajectory_left[leg_index])
+        sendAngleCommands(leg1, leg2, leg3, leg4)
+        # msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}\n'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
+        # # vrep_socket.send(msg)
+        # bbb_socket.send(msg)
+        # time.sleep(.1)
+
+        if leg_index == precision - 1:
+            leg_index = 0
+            time.sleep(0.5)
+        else:
+            leg_index = leg_index + 1
+
+        print leg_index
+        time.sleep(.08)
+
+
 def balanceTest(high_pt, low_pt, precision):
     z_trajectory = np.linspace(high_pt, low_pt, precision)
     x_trajectory = np.zeros((precision, 1))
@@ -462,7 +525,7 @@ def startPos():
 
 def homePos(curr_pos, delay_time):
     home_pos = [0, 0, -250]
-    step_height = 75
+    step_height = 100
     precision = 20
 
     leg_1_pos = curr_pos[0]
@@ -572,10 +635,10 @@ def sendAngleCommands(leg1, leg2, leg3, leg4):
     msg = '{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f},{:07.3f}'.format(leg1[0], leg1[1], leg1[2], leg2[0], leg2[1], leg2[2], leg3[0], leg3[1], leg3[2], leg4[0], leg4[1], leg4[2])
     vrep_socket.send(msg)
 
-    leg_1_servo = angleToServoValue(leg1, 1)
-    leg_2_servo = angleToServoValue(leg2, 2)
-    leg_3_servo = angleToServoValue(leg3, 3)
-    leg_4_servo = angleToServoValue(leg4, 4)
+    # leg_1_servo = angleToServoValue(leg1, 1)
+    # leg_2_servo = angleToServoValue(leg2, 2)
+    # leg_3_servo = angleToServoValue(leg3, 3)
+    # leg_4_servo = angleToServoValue(leg4, 4)
 
     # msg2 = serialSend_All(leg_1_servo, leg_2_servo, leg_3_servo, leg_4_servo)
 
@@ -584,11 +647,11 @@ def sendAngleCommands(leg1, leg2, leg3, leg4):
     # msg2 = " ".join((msg2, backslash))
     # print msg2
 
-    msg2 = '{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f}'.format(leg_1_servo[0], leg_1_servo[1], leg_1_servo[2], leg_2_servo[0], leg_2_servo[1], leg_2_servo[2], leg_3_servo[0], leg_3_servo[1], leg_3_servo[2], leg_4_servo[0], leg_4_servo[1], leg_4_servo[2])
-    print msg2, len(msg2)
+    # msg2 = '{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f},{:04.0f}'.format(leg_1_servo[0], leg_1_servo[1], leg_1_servo[2], leg_2_servo[0], leg_2_servo[1], leg_2_servo[2], leg_3_servo[0], leg_3_servo[1], leg_3_servo[2], leg_4_servo[0], leg_4_servo[1], leg_4_servo[2])
+    # print msg2, len(msg2)
 
-    bbb_socket.send(msg2)
-    time.sleep(0.01)
+    # bbb_socket.send(msg2)
+    # time.sleep(0.01)
 
 def blynk_controller():
     global blynk_power, blynk_height, blynk_x_pos, blynk_y_pos, blynk_radius, blynk_angle

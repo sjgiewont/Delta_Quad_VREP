@@ -1,0 +1,714 @@
+<robot name="DeltaQuad_1">
+  <link name="RoBoard_servo-3">
+    <inertial>
+      <origin xyz="-0.0752751 -0.0509917 -0.0761301" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0652001 -0.0713178 -0.0560379" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-3.stl"/>
+      </geometry>
+      <material name="RoBoard_servo-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0652001 -0.0713178 -0.0560379" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="RoBoard_base_1-1">
+    <inertial>
+      <origin xyz="-0.0196481 0.0094699 0.0219991" rpy="0 0 0"/>
+      <mass value="0.0752694"/>
+      <inertia ixx="5.11267e-05" ixy="-6.73759e-10" ixz="1.85052e-09" iyy="9.11146e-05" iyz="3.35691e-10" izz="5.11294e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_base_1-1.stl"/>
+      </geometry>
+      <material name="RoBoard_base_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_base_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_base_1-1--RoBoard_servo-3" type="fixed">
+    <origin xyz="-0.0602001 -0.0708178 -0.0964379" rpy="3.14159265359 0 -1.57079632679"/>
+    <parent link="RoBoard_servo-3"/>
+    <child link="RoBoard_base_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_servo-1">
+    <inertial>
+      <origin xyz="-0.010075 0.0203263120893 -0.0200921830098" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-1.stl"/>
+      </geometry>
+      <material name="RoBoard_servo-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_base_1-1--RoBoard_servo-1" type="fixed">
+    <origin xyz="-0.083765 0.005 0.0357491" rpy="1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_base_1-1"/>
+    <child link="RoBoard_servo-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket-2">
+    <inertial>
+      <origin xyz="0.0103612084444 -0.0158078115801 0.0211505840125" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0223612424288 -0.0352973925647 0.0423008200477" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-2.stl"/>
+      </geometry>
+      <material name="servo_C_bracket-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0223612424288 -0.0352973925647 0.0423008200477" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_servo-1--servo_C_bracket-2" type="continuous">
+    <origin xyz="-0.02015 0 0" rpy="-1.57079599374 0.029057035559 0"/>
+    <axis xyz="8.03468590653e-08 -1.33409935488e-07 -0.999999650312"/>
+    <parent link="RoBoard_servo-1"/>
+    <child link="servo_C_bracket-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_armlink_1-4">
+    <inertial>
+      <origin xyz="-2.89956626597e-07 -0.0265621870407 -4.81514413925e-07" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.0531248767756 -2.55744452365e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-4.stl"/>
+      </geometry>
+      <material name="deltaleg_armlink_1-4_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.0531248767756 -2.55744452365e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket-2--deltaleg_armlink_1-4" type="continuous">
+    <origin xyz="0.0103612347134 -0.034297286831 0.0211507735043" rpy="1.13004836677e-07 -0.523598833187 0"/>
+    <axis xyz="2.83643264654e-07 -1.00000018718 -1.63761504079e-07"/>
+    <parent link="servo_C_bracket-2"/>
+    <child link="deltaleg_armlink_1-4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_hinge_link_2-1">
+    <inertial>
+      <origin xyz="-0.00726725968391 0.00635012435642 -0.0095243357902" rpy="0 0 0"/>
+      <mass value="0.00187867"/>
+      <inertia ixx="1.24953e-07" ixy="0.0" ixz="0.0" iyy="1.60017e-07" iyz="0.0" izz="8.96468e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-1.stl"/>
+      </geometry>
+      <material name="deltaleg_hinge_link_2-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_armlink_1-4--deltaleg_hinge_link_2-1" type="fixed">
+    <origin xyz="-0.0108734227563 -0.0499500051286 -0.00357989057246" rpy="-2.476854469 1.51529898906e-07 1.57079679311"/>
+    <parent link="deltaleg_armlink_1-4"/>
+    <child link="deltaleg_hinge_link_2-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_knee_joint_1-3">
+    <inertial>
+      <origin xyz="0.0165165378387 -0.0063500439555 0.0107041965446" rpy="0 0 0"/>
+      <mass value="0.00491641"/>
+      <inertia ixx="2.27751e-07" ixy="0.0" ixz="-2.01487e-07" iyy="6.86084e-07" iyz="0.0" izz="5.99086e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341424090988 -0.0126997929329 0.0204922807416" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-3.stl"/>
+      </geometry>
+      <material name="deltaleg_knee_joint_1-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341424090988 -0.0126997929329 0.0204922807416" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_hinge_link_2-1--deltaleg_knee_joint_1-3" type="continuous">
+    <origin xyz="-0.0150496664055 0.00635009947777 -0.00317437675885" rpy="1.5707965545 0 -0.908008631381"/>
+    <axis xyz="1.42259227148e-07 -0.999999811034 -4.30851043731e-08"/>
+    <parent link="deltaleg_hinge_link_2-1"/>
+    <child link="deltaleg_knee_joint_1-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_leg_1-1">
+    <inertial>
+      <origin xyz="0 -0.0905622917371 -2.05162697053e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.181124959516 -2.65608284561e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-1.stl"/>
+      </geometry>
+      <material name="deltaleg_leg_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.181124959516 -2.65608284561e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_knee_joint_1-3--deltaleg_leg_1-1" type="continuous">
+    <origin xyz="0.014142064683 -0.00635014943184 0.0141422252402" rpy="1.80330637193e-07 -0.505830995882 1.57079576267"/>
+    <axis xyz="-5.65583235107e-08 -1.00000012589 -8.37877467685e-08"/>
+    <parent link="deltaleg_knee_joint_1-3"/>
+    <child link="deltaleg_leg_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_platform_link_1-3">
+    <inertial>
+      <origin xyz="0.00396291410433 -7.42583668778e-07 5.00246978577e-07" rpy="0 0 0"/>
+      <mass value="0.00664445"/>
+      <inertia ixx="3.53076e-07" ixy="0.0" ixz="0.0" iyy="1.01049e-06" iyz="0.0" izz="8.4694e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-2.44803673749e-07 -0.00635015676953 0.00952492153786" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-3.stl"/>
+      </geometry>
+      <material name="deltaleg_platform_link_1-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.44803673749e-07 -0.00635015676953 0.00952492153786" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_leg_1-1--deltaleg_platform_link_1-3" type="continuous">
+    <origin xyz="0 -0.181124959516 -2.65608284561e-07" rpy="-1.07426470567 -3.11488898563e-07 1.57079631072"/>
+    <axis xyz="1.00000012589 1.80917663295e-07 -1.44068364655e-07"/>
+    <parent link="deltaleg_leg_1-1"/>
+    <child link="deltaleg_platform_link_1-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="RoBoard_servo-2">
+    <inertial>
+      <origin xyz="-0.010075 0.0203260782763 -0.0200921938622" rpy="0 0 0"/>
+      <mass value="0.0326959"/>
+      <inertia ixx="8.9469e-06" ixy="0.0" ixz="0.0" iyy="5.49064e-06" iyz="-5.81278e-08" izz="5.62832e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-2.stl"/>
+      </geometry>
+      <material name="RoBoard_servo-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - roboard_servo-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_base_1-1--RoBoard_servo-2" type="fixed">
+    <origin xyz="0.024315 0.005 0.0706501" rpy="-1.04719714741 0 -1.57079632679"/>
+    <parent link="RoBoard_base_1-1"/>
+    <child link="RoBoard_servo-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket-4">
+    <inertial>
+      <origin xyz="-0.0104231879479 -0.0158746353399 -0.021150128149" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00157678427576 -0.0353640107873 1.74408131354e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-4.stl"/>
+      </geometry>
+      <material name="servo_C_bracket-4_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00157678427576 -0.0353640107873 1.74408131354e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_servo-2--servo_C_bracket-4" type="continuous">
+    <origin xyz="-0.02015 0 0" rpy="-1.57079618453 -0.0354641812869 3.14159250257"/>
+    <axis xyz="-1.43764453224e-07 -6.48573265094e-08 0.999999650312"/>
+    <parent link="RoBoard_servo-2"/>
+    <child link="servo_C_bracket-4"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_armlink_1-2">
+    <inertial>
+      <origin xyz="-1.15956737601e-07 -0.0265622596399 2.19435252316e-07" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-2.31913475181e-07 -0.0531245192798 4.3887050466e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-2.stl"/>
+      </geometry>
+      <material name="deltaleg_armlink_1-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.31913475181e-07 -0.0531245192798 4.3887050466e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket-4--deltaleg_armlink_1-2" type="continuous">
+    <origin xyz="-0.0104232187453 -0.0343639007746 -0.0211499243731" rpy="0 0.523598899501 0"/>
+    <axis xyz="-2.75329585769e-07 -1.0000003294 -1.5896170974e-07"/>
+    <parent link="servo_C_bracket-4"/>
+    <child link="deltaleg_armlink_1-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_hinge_link_2-3">
+    <inertial>
+      <origin xyz="-0.0040925350346 0 0" rpy="0 0 0"/>
+      <mass value="0.00187867"/>
+      <inertia ixx="1.24953e-07" ixy="0.0" ixz="0.0" iyy="1.60017e-07" iyz="0.0" izz="8.96468e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317457254519 -0.00635012133798 0.00952569338727" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-3.stl"/>
+      </geometry>
+      <material name="deltaleg_hinge_link_2-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317457254519 -0.00635012133798 0.00952569338727" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_armlink_1-2--deltaleg_hinge_link_2-3" type="continuous">
+    <origin xyz="-2.31913475181e-07 -0.0531245192798 4.3887050466e-07" rpy="2.47097793735 -4.44712543957e-07 1.5707961993"/>
+    <axis xyz="1.0000003294 -6.17623473614e-08 3.15745614377e-07"/>
+    <parent link="deltaleg_armlink_1-2"/>
+    <child link="deltaleg_hinge_link_2-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_knee_joint_1-1">
+    <inertial>
+      <origin xyz="0.016516538543 0.00635027593132 0.0107042653836" rpy="0 0 0"/>
+      <mass value="0.00491641"/>
+      <inertia ixx="2.27751e-07" ixy="0.0" ixz="-2.01487e-07" iyy="6.86084e-07" iyz="0.0" izz="5.99086e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341418747084 -4.12971579489e-07 0.0204920957599" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-1.stl"/>
+      </geometry>
+      <material name="deltaleg_knee_joint_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341418747084 -4.12971579489e-07 0.0204920957599" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_hinge_link_2-3--deltaleg_knee_joint_1-1" type="continuous">
+    <origin xyz="-0.011874931076 -1.03152549558e-07 0.00635031441589" rpy="-1.57079660254 0 0.90752532037"/>
+    <axis xyz="-5.45389754553e-07 0.999999597118 1.22805486391e-07"/>
+    <parent link="deltaleg_hinge_link_2-3"/>
+    <child link="deltaleg_knee_joint_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_leg_1-2">
+    <inertial>
+      <origin xyz="4.86517837739e-07 -0.0905628157021 -3.34639447847e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.181125497952 1.31792854574e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-2.stl"/>
+      </geometry>
+      <material name="deltaleg_leg_1-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.181125497952 1.31792854574e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_knee_joint_1-1--deltaleg_leg_1-2" type="continuous">
+    <origin xyz="0.0141417353578 0.00635023996934 0.0141428339579" rpy="-1.31044633831e-06 1.27443085588 1.57079485555"/>
+    <axis xyz="-1.00936292075e-07 -0.999999726061 -2.84781182774e-07"/>
+    <parent link="deltaleg_knee_joint_1-1"/>
+    <child link="deltaleg_leg_1-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_platform_link_1-1">
+    <inertial>
+      <origin xyz="0.00396311129519 0.00635021834868 -0.00952482576145" rpy="0 0 0"/>
+      <mass value="0.00664445"/>
+      <inertia ixx="3.53076e-07" ixy="0.0" ixz="0.0" iyy="1.01049e-06" iyz="0.0" izz="8.4694e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-1.stl"/>
+      </geometry>
+      <material name="deltaleg_platform_link_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_leg_1-2--deltaleg_platform_link_1-1" type="fixed">
+    <origin xyz="0.00881356101876 -0.181125316468 0.00730534462413" rpy="0.290644502168 -2.25272881071e-07 1.5707961151"/>
+    <parent link="deltaleg_leg_1-2"/>
+    <child link="deltaleg_platform_link_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="servo_C_bracket-3">
+    <inertial>
+      <origin xyz="-0.00636018549855 -0.0128199219137 -0.02115" rpy="0 0 0"/>
+      <mass value="0.00355141"/>
+      <inertia ixx="2.48402e-06" ixy="0.0" ixz="0.0" iyy="1.51807e-06" iyz="0.0" izz="1.30302e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00563946012457 -0.0323092520736 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-3.stl"/>
+      </geometry>
+      <material name="servo_C_bracket-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00563946012457 -0.0323092520736 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - servo_c_bracket-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RoBoard_servo-3--servo_C_bracket-3" type="continuous">
+    <origin xyz="-0.0853501 -0.0713178 -0.0560379" rpy="-1.57079632679 0.324550096124 3.14159265359"/>
+    <axis xyz="-2.22044604925e-16 0.0 1.0"/>
+    <parent link="RoBoard_servo-3"/>
+    <child link="servo_C_bracket-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_armlink_1-3">
+    <inertial>
+      <origin xyz="0 -0.0265625441315 0" rpy="0 0 0"/>
+      <mass value="0.00097177"/>
+      <inertia ixx="2.29964e-07" ixy="0.0" ixz="0.0" iyy="2.8291e-09" iyz="0.0" izz="2.29964e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-2.70783466563e-07 -0.0531251775669 -4.26933930153e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-3.stl"/>
+      </geometry>
+      <material name="deltaleg_armlink_1-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.70783466563e-07 -0.0531251775669 -4.26933930153e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_armlink_1-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="servo_C_bracket-3--deltaleg_armlink_1-3" type="continuous">
+    <origin xyz="-0.00636021224918 -0.0313092625623 -0.02115" rpy="-3.14159208817 -1.03586519986 3.14159091254"/>
+    <axis xyz="-7.40347802203e-07 -0.999999598179 -6.83983806982e-07"/>
+    <parent link="servo_C_bracket-3"/>
+    <child link="deltaleg_armlink_1-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_hinge_link_2-2">
+    <inertial>
+      <origin xyz="-0.0040926355805 0 0" rpy="0 0 0"/>
+      <mass value="0.00187867"/>
+      <inertia ixx="1.24953e-07" ixy="0.0" ixz="0.0" iyy="1.60017e-07" iyz="0.0" izz="8.96468e-08"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00317517375495 -0.00634931409947 0.00952502806254" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-2.stl"/>
+      </geometry>
+      <material name="deltaleg_hinge_link_2-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00317517375495 -0.00634931409947 0.00952502806254" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_hinge_link_2-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_armlink_1-3--deltaleg_hinge_link_2-2" type="continuous">
+    <origin xyz="-2.70783466563e-07 -0.0531251775669 -4.26933930153e-07" rpy="2.09817654474 -5.67184263833e-07 1.57079534834"/>
+    <axis xyz="0.99999959818 -1.89024210728e-08 -2.6453705387e-07"/>
+    <parent link="deltaleg_armlink_1-3"/>
+    <child link="deltaleg_hinge_link_2-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_knee_joint_1-2">
+    <inertial>
+      <origin xyz="0.0165163769591 -0.00635002430983 0.0107039043858" rpy="0 0 0"/>
+      <mass value="0.00491641"/>
+      <inertia ixx="2.27751e-07" ixy="0.0" ixz="-2.01487e-07" iyy="6.86084e-07" iyz="0.0" izz="5.99086e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0341422489879 -0.0127000484742 0.0204921728122" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-2.stl"/>
+      </geometry>
+      <material name="deltaleg_knee_joint_1-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0341422489879 -0.0127000484742 0.0204921728122" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_knee_joint_1-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_hinge_link_2-2--deltaleg_knee_joint_1-2" type="continuous">
+    <origin xyz="-0.0118749581514 2.82146380912e-07 0.00635008629814" rpy="1.57079603965 -2.35363939061e-07 -1.02772936179"/>
+    <axis xyz="-3.67340319584e-07 -0.999999507991 -6.1489220275e-08"/>
+    <parent link="deltaleg_hinge_link_2-2"/>
+    <child link="deltaleg_knee_joint_1-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_leg_1-3">
+    <inertial>
+      <origin xyz="0 -0.0905625745801 -1.63216567067e-07" rpy="0 0 0"/>
+      <mass value="0.00331316"/>
+      <inertia ixx="9.06253e-06" ixy="0.0" ixz="0.0" iyy="9.64556e-09" iyz="0.0" izz="9.06253e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.181125529905 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-3.stl"/>
+      </geometry>
+      <material name="deltaleg_leg_1-3_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.181125529905 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_leg_1-3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_knee_joint_1-2--deltaleg_leg_1-3" type="continuous">
+    <origin xyz="0.0141419510345 -0.00635008895015 0.0141418181449" rpy="-3.14159207776 -0.673325203226 -1.5707972401"/>
+    <axis xyz="-3.96064536057e-07 -0.999999736577 2.04649298896e-07"/>
+    <parent link="deltaleg_knee_joint_1-2"/>
+    <child link="deltaleg_leg_1-3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_platform_link_1-2">
+    <inertial>
+      <origin xyz="0.00413863961388 1.83232672604e-07 0" rpy="0 0 0"/>
+      <mass value="0.00664445"/>
+      <inertia ixx="3.53076e-07" ixy="0.0" ixz="0.0" iyy="1.01049e-06" iyz="0.0" izz="8.4694e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.000175378503768 -0.00635045717577 0.00952500482935" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-2.stl"/>
+      </geometry>
+      <material name="deltaleg_platform_link_1-2_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000175378503768 -0.00635045717577 0.00952500482935" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_platform_link_1-2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_leg_1-3--deltaleg_platform_link_1-2" type="continuous">
+    <origin xyz="0 -0.181125529905 0" rpy="-2.24958888998 4.71892893206e-07 1.57079592905"/>
+    <axis xyz="0.999999736577 -2.09060276313e-07 -1.66480339524e-07"/>
+    <parent link="deltaleg_leg_1-3"/>
+    <child link="deltaleg_platform_link_1-2"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaquad_platform_1-1">
+    <inertial>
+      <origin xyz="-3.38240382439e-07 0.00426784373256 0" rpy="0 0 0"/>
+      <mass value="0.018221"/>
+      <inertia ixx="6.31274e-06" ixy="-9.20115e-12" ixz="-1.53526e-15" iyy="1.19866e-05" iyz="3.50719e-16" izz="6.31273e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaquad_platform_1-1.stl"/>
+      </geometry>
+      <material name="deltaquad_platform_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaquad_platform_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="deltaleg_platform_link_1-2--deltaquad_platform_1-1" type="fixed">
+    <origin xyz="-0.0491470963683 -0.0158568191424 0" rpy="-3.14159242128 0 0.870865509112"/>
+    <parent link="deltaleg_platform_link_1-2"/>
+    <child link="deltaquad_platform_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="10_24_1_5_screw-1">
+    <inertial>
+      <origin xyz="0 -0.0148291154449 1.1307739646e-07" rpy="0 0 0"/>
+      <mass value="0.000877038"/>
+      <inertia ixx="1.46939e-07" ixy="0.0" ixz="0.0" iyy="4.04014e-09" iyz="0.0" izz="1.46939e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - 10_24_1_5_screw-1.stl"/>
+      </geometry>
+      <material name="10_24_1_5_screw-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - 10_24_1_5_screw-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10_24_1_5_screw-1--deltaquad_platform_1-1" type="continuous">
+    <origin xyz="-5.57382921484e-07 0.00500008437718 0" rpy="-1.67153200992e-07 0.812241506192 -1.71010338058e-07"/>
+    <axis xyz="1.21381367568e-07 -1.00000021128 1.69265178818e-07"/>
+    <parent link="deltaquad_platform_1-1"/>
+    <child link="10_24_1_5_screw-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="deltaleg_toe_1-1">
+    <inertial>
+      <origin xyz="0 -0.00287339807854 4.07105930508e-07" rpy="0 0 0"/>
+      <mass value="0.015563"/>
+      <inertia ixx="1.58633e-06" ixy="0.0" ixz="0.0" iyy="2.6038e-06" iyz="0.0" izz="1.58633e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.00999934930308 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_toe_1-1.stl"/>
+      </geometry>
+      <material name="deltaleg_toe_1-1_color">
+        <color rgba="0.792157 0.819608 0.933333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00999934930308 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="C:\Users\stevy\OneDrive\Documents\Steven's Stuff\RIT 5\Robotics Research\VREP\solidowrks_vrep_import\deltaquad_1 - deltaleg_toe_1-1.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="10_24_1_5_screw-1--deltaleg_toe_1-1" type="continuous">
+    <origin xyz="0 -0.038099718844 1.36420987923e-07" rpy="0 -0.59378013209 3.1415925962"/>
+    <axis xyz="-5.34694377143e-08 1.00000021128 2.6552673954e-07"/>
+    <parent link="10_24_1_5_screw-1"/>
+    <child link="deltaleg_toe_1-1"/>
+    <dynamics damping="0.1"/>
+  </joint>
+</robot>
